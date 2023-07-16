@@ -46,8 +46,8 @@ public class FileReader {
                     String num_sections = row1.getCell(3).getStringCellValue();
                     String num_sessions = row1.getCell(4).getStringCellValue();
                     String instructor_name = row1.getCell(5).getStringCellValue();
-                    instructor_days = getDayIndex(row1.getCell(6).getStringCellValue());
-                    String instructor_hours = row.getCell(7).getgetStringCellValue();
+                    String instructor_days = row1.getCell(6).getStringCellValue();
+                    String instructor_hours = row1.getCell(7).getStringCellValue();
 
 
                   LinkedList<String> timeslots = convertHourstoSlots(instructor_hours);
@@ -56,15 +56,15 @@ public class FileReader {
                   int index2 = slots[1];
 
 
-                    LinkedList<String>Split_Days = Split_Days(instructors_day);
-                    LinkedList<Integer>instructor_days = new LinkedList<Integer>();
+                    LinkedList<String>Split_Days = Split_Days(instructor_days);
+                    LinkedList<Integer>Instructor_days = new LinkedList<Integer>();
 
                     for(int i=0;i<Split_Days.size();i++){
-                       instructor_days.add(getDayIndex(Split_Days.get(i)));
+                       Instructor_days.add(getDayIndex(Split_Days.get(i)));
                    }
 
-                    String conflict_courses = = row2.getCell(0).getStringCellValue();
-                    LinkedList<String> conflicting_courses = Split_Days(conflicting_courses);
+                    String conflict_courses  = row2.getCell(0).getStringCellValue();
+                    LinkedList<String> conflicting_courses = Split_Days(conflict_courses);
 
                     String course_type = row2.getCell(1).getStringCellValue();
                     String session_time = row2.getCell(2).getStringCellValue();
@@ -72,32 +72,33 @@ public class FileReader {
 
               
 
-                      Course course = new  Course(course_id, course_name, Integer.parseInt(num_credits),Integer.parseInt(num_sections),Integer.parseInt(num_sessions), instructor_name,
-                                instructor_days, index1, index2, conflicting_courses , course_type , calculateSlots(session_time));
+                      course course = new  course(course_id, course_name, Integer.parseInt(num_credits),Integer.parseInt(num_sections),Integer.parseInt(num_sessions), instructor_name,
+                      Instructor_days, index1, index2, conflicting_courses , course_type , calculateSlots(session_time));
 
         
                       Courses.put(UUID.randomUUID() , course);
                 }
             }
          }
-        } 
+         workbook.close();
+         fis.close();
+ 
+         return Courses;
+         }
+        
 
-        workbook.close();
-        fis.close();
 
-        return Courses;
-    }
 
     public static int calculateSlots(String duration) {
-        String[] parts = duration.split("\s+");
+        String[] parts = duration.split("\\s+");
 
         int hours = 0;
         int minutes = 0;
 
         for (int i = 0; i < parts.length; i++) {
-            if (parts[i].equalsIgnoreCase("hour")  || parts[i].equals(equalsIgnoreCase"hours")) {
+            if ( parts[i].equalsIgnoreCase("hour")  || parts[i].equalsIgnoreCase("hours") ) {
                 hours = Integer.parseInt(parts[i - 1]);
-            } else if (parts[i].equalsIgnoreCase("min") || parts[i].equalsIgnoreCase("mins") || parts[i].equals(equalsIgnoreCase"minutes")) {
+            } else if (parts[i].equalsIgnoreCase("min") || parts[i].equalsIgnoreCase("mins") || parts[i].equalsIgnoreCase("minutes")) {
                 minutes = Integer.parseInt(parts[i - 1]);
             }
             else if(parts[i].equalsIgnoreCase("internship") || parts[i].equalsIgnoreCase("no")){
@@ -108,8 +109,8 @@ public class FileReader {
         int totalMinutes = (hours * 60) + minutes;
         int slots = totalMinutes / 75;
 
-        if(sltos == 0){
-            slots == 1;
+        if(slots == 0){
+            slots = 1;
         }
 
         return slots;
@@ -228,4 +229,4 @@ public class FileReader {
         // Return the viable slots as an array
         return new int[]{startSlot, endSlot};
     }
- }
+}
