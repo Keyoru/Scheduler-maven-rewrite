@@ -46,19 +46,8 @@ public class FileReader {
                     String num_sections = row1.getCell(3).getStringCellValue();
                     String num_sessions = row1.getCell(4).getStringCellValue();
                     String instructor_name = row1.getCell(5).getStringCellValue();
-
-                    LinkedList<Integer> instructor_days = new LinkedList<Integer>();
-                    LinkedList<String> days = Split_Days(String instructors_day);
-                    for(String s : days){
-                        instructor_days.add(getDayIndex(String day));
-                    }
-
                     instructor_days = getDayIndex(row1.getCell(6).getStringCellValue());
-
-                    LinkedList<String> conflicting_courses = new LinkedList<String>();
-                    conflicting_courses = = row2.getCell(4).getStringCellValue();
-                    String course_type = row2.getCell(10).getStringCellValue();
-                    String num_of_slots = row2.getCell(11).getStringCellValue();
+                    String instructor_hours = row.getCell(7).getgetStringCellValue();
 
                     LinkedList<String>Split_Days = Split_Days(instructors_day);
                     LinkedList<Integer>instructor_days = new LinkedList<Integer>();
@@ -66,6 +55,14 @@ public class FileReader {
                     for(int i=0;i<Split_Days.size();i++){
                        instructor_days.add(getDayIndex(Split_Days.get(i)));
                    }
+
+                    String conflicting_courses = = row2.getCell(0).getStringCellValue();
+                    LinkedList<String> conflicting_courses = Split_Days(conflicting_courses);
+
+                    String course_type = row2.getCell(1).getStringCellValue();
+                    String num_of_slots = row2.getCell(2).getStringCellValue();
+
+
 
               
                   LinkedList<String> timeslots = convertHourstoSlots(instructor_hours);
@@ -97,9 +94,12 @@ public class FileReader {
            for (Cell cell : firstRow) {
              // Check the header value of a specific column
             if (cell.getColumnIndex() == 0 && cell.getStringCellValue().equalsIgnoreCase("course code")) {
-       return true;
-      }
-     }
+             return true;
+           }
+           else{
+            break;
+           }
+         }
     }
    return false;
   }
