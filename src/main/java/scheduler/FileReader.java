@@ -1,4 +1,5 @@
 package scheduler;
+import java.io.*;
 import java.io.FileInputStream;
 import java.io.IOException;
 import java.time.LocalTime;
@@ -15,13 +16,13 @@ import org.apache.poi.xssf.usermodel.XSSFWorkbook;
 //testing 
 
 public class FileReader {
-    private String file;
+    private File file;
 
-    public FileReader(String file) {
-        this.file = file;
+    public FileReader(File f) {
+        this.file = f;
     }
 
-    public Map<UUID, course> readCoursesFromSheet(String sheetName) throws IOException {
+    public HashMap<UUID, course> readCoursesFromSheet() throws IOException {
        HashMap<UUID, course> Courses = new HashMap<UUID, course>();
 
         FileInputStream fis = new FileInputStream(file);
