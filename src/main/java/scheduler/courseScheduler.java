@@ -65,7 +65,7 @@ public class courseScheduler {
             }
 
         } catch (IOException e) {
-            System.out.println("An error occurred while writing to the log file: " + e.getMessage());
+            printWriter.println("An error occurred while writing to the log file: " + e.getMessage());
         }
     }
 
@@ -94,8 +94,8 @@ public class courseScheduler {
             courseMap.get(courseId).conflictingCourses.add(courseID);
         }
 
-        //System.out.println(courseMap.get(courseId).courseID);
-        //System.out.println(courseMap.get(courseId).conflictingCourses.toString());
+        //printWriter.println(courseMap.get(courseId).courseID);
+        //printWriter.println(courseMap.get(courseId).conflictingCourses.toString());
 
         course currentSection = null;
         if(courseMap.get(courseId).numberOfSections > 1){
@@ -108,23 +108,23 @@ public class courseScheduler {
                courseMap.get(courseId).instructorDays,courseMap.get(courseId).TimeSlotIndexstart, courseMap.get(courseId).TimeSlotIndexEnd,courseMap.get(courseId).conflictingCourses,
                courseMap.get(courseId).courseType,courseMap.get(courseId).nbOfSlots);
 
-               System.out.println(currentSection.courseID);
+               printWriter.println(currentSection.courseID);
                 
                 UUID courseSectionId = UUID.randomUUID();
                 courseMap.put(courseSectionId, currentSection);
                 boolean iscourseScheduled = false;
                 if (attemptDayPairSchedule(courseSectionId)) {
-                    System.out.println("pairs true");
+                    printWriter.println("pairs true");
                     continue;
                 }
                 
                 if (attemptEqualSpreadSchedule(courseSectionId)) {
-                    System.out.println("equal spread true");
+                    printWriter.println("equal spread true");
                     continue;
                 }
                 
                 if (attemptAnySchedule(courseSectionId)) {
-                    System.out.println("any true");
+                    printWriter.println("any true");
                     continue;
                 }
                 
@@ -136,17 +136,17 @@ public class courseScheduler {
             printWriter.println("Adding course " + courseMap.get(courseId).courseID);
 
             if (attemptDayPairSchedule(courseId) && !(courseMap.get(courseId).numberOfSessions < courseMap.get(courseId).instructorDays.size())) {
-                System.out.println("pairs true");
+                printWriter.println("pairs true");
                 return;
             }
 
             if (attemptEqualSpreadSchedule(courseId)) {
-                System.out.println("equal spread true");
+                printWriter.println("equal spread true");
                 return;
             }
         
             if (attemptAnySchedule(courseId)) {
-                System.out.println("any true");
+                printWriter.println("any true");
                 return;
             }
 
@@ -158,7 +158,7 @@ public class courseScheduler {
 
 // TODO different lectures on different day pairs or times if possible
 private boolean attemptDayPairSchedule(UUID courseId) {
-    System.out.println("attempt day pair");
+    printWriter.println("attempt day pair");
     course course = courseMap.get(courseId);
 
     for (List<Integer> dayPair : dayPairs) {
@@ -194,12 +194,12 @@ private boolean attemptDayPairSchedule(UUID courseId) {
 
                 timeSlotIndex++;
             }
-            System.out.println(courseMap.get(courseId).sessionsScheduled);
-            System.out.println(courseMap.get(courseId).numberOfSessions);
+            printWriter.println(courseMap.get(courseId).sessionsScheduled);
+            printWriter.println(courseMap.get(courseId).numberOfSessions);
             if (courseMap.get(courseId).sessionsScheduled >= courseMap.get(courseId).numberOfSessions) {
                 return true;
             } else {
-                System.out.println("pair false");
+                printWriter.println("pair false");
             }
         }
     }
@@ -242,14 +242,14 @@ private boolean attemptEqualSpreadSchedule(UUID courseId) {
         if (courseMap.get(courseId).sessionsScheduled >= courseMap.get(courseId).numberOfSessions) {
             return true;
         } else {
-            System.out.println("equal spread false");
+            printWriter.println("equal spread false");
             return false;
         }
     }
 
 
 //    private boolean attemptEqualSpreadSchedule(UUID courseId) {
-//        System.out.println("attempt equal");
+//        printWriter.println("attempt equal");
 //        int sessionsPerDay = courseMap.get(courseId).numberOfSessions / courseMap.get(courseId).instructorDays.size();
 //    
 //        // Calculate the effective number of days for scheduling
@@ -260,7 +260,7 @@ private boolean attemptEqualSpreadSchedule(UUID courseId) {
 //        int timeSlotIndex = courseMap.get(courseId).TimeSlotIndexstart;
 //    
 //        while (courseMap.get(courseId).sessionsScheduled <= courseMap.get(courseId).numberOfSessions) {
-//            System.out.println(courseMap.get(courseId).sessionsScheduled);
+//            printWriter.println(courseMap.get(courseId).sessionsScheduled);
 //            if (dayIndex >= effectiveDays) {
 //                dayIndex = 0;
 //                timeSlotIndex++;
@@ -287,7 +287,7 @@ private boolean attemptEqualSpreadSchedule(UUID courseId) {
 //        if (courseMap.get(courseId).sessionsScheduled >= courseMap.get(courseId).numberOfSessions) {
 //            return true;
 //        } else {
-//            System.out.println("equal spread false");
+//            printWriter.println("equal spread false");
 //            return false;
 //        }
 //    }
@@ -316,12 +316,12 @@ private boolean attemptEqualSpreadSchedule(UUID courseId) {
             }
         }
 
-        System.out.println(courseMap.get(courseId).sessionsScheduled);
+        printWriter.println(courseMap.get(courseId).sessionsScheduled);
     
         if (courseMap.get(courseId).sessionsScheduled >= courseMap.get(courseId).numberOfSessions) {
             return true;
         }else{
-            System.out.println("any false");
+            printWriter.println("any false");
         }
     
         return false;
@@ -329,9 +329,9 @@ private boolean attemptEqualSpreadSchedule(UUID courseId) {
     
 
     private void scheduleCourseInSlot(UUID courseId, int dayIndex, int slotIndex){
-        System.out.println("added course to day: " + dayIndex + " time slot: "+ slotIndex);
+        printWriter.println("added course to day: " + dayIndex + " time slot: "+ slotIndex);
         courseMap.get(courseId).sessionsScheduled ++;
-        System.out.println("scheduled sessions: " + courseMap.get(courseId).sessionsScheduled);
+        printWriter.println("scheduled sessions: " + courseMap.get(courseId).sessionsScheduled);
         schedule[dayIndex][slotIndex].add(courseId);
         printWriter.flush();
     }
@@ -341,7 +341,7 @@ private boolean attemptEqualSpreadSchedule(UUID courseId) {
             return;
         }
         for(int i = SlotIndexStart; i <= slotIndexEnd; i++){
-            System.out.println("added course to day: " + dayIndex + " time slot: "+ i);
+            printWriter.println("added course to day: " + dayIndex + " time slot: "+ i);
             schedule[dayIndex][i].add(courseId);
             courseMap.get(courseId).sessionsScheduled++;
         };
@@ -369,7 +369,7 @@ private boolean attemptEqualSpreadSchedule(UUID courseId) {
                 }
             }
         }
-        System.out.println("slot av true");
+        printWriter.println("slot av true");
         return true;
     }
     

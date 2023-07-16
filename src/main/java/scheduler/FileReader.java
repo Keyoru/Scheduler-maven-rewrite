@@ -108,11 +108,8 @@ public class FileReader {
         }
 
         int totalMinutes = (hours * 60) + minutes;
-        int slots = totalMinutes / 75;
+        int slots = (int) Math.ceil((double) totalMinutes / 75);
 
-        if(slots == 0){
-            slots = 1;
-        }
 
         return slots;
     }
