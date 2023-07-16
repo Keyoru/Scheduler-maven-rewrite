@@ -49,6 +49,13 @@ public class FileReader {
                     instructor_days = getDayIndex(row1.getCell(6).getStringCellValue());
                     String instructor_hours = row.getCell(7).getgetStringCellValue();
 
+
+                  LinkedList<String> timeslots = convertHourstoSlots(instructor_hours);
+                  int[] slots = getSlotsIndicies(timeslots.getFirst() , timeslots.getLast());
+                  int index1 = slots[0];
+                  int index2 = slots[1];
+
+
                     LinkedList<String>Split_Days = Split_Days(instructors_day);
                     LinkedList<Integer>instructor_days = new LinkedList<Integer>();
 
@@ -56,22 +63,17 @@ public class FileReader {
                        instructor_days.add(getDayIndex(Split_Days.get(i)));
                    }
 
-                    String conflicting_courses = = row2.getCell(0).getStringCellValue();
+                    String conflict_courses = = row2.getCell(0).getStringCellValue();
                     LinkedList<String> conflicting_courses = Split_Days(conflicting_courses);
 
                     String course_type = row2.getCell(1).getStringCellValue();
-                    String num_of_slots = row2.getCell(2).getStringCellValue();
-
+                    String session_time = row2.getCell(2).getStringCellValue();
 
 
               
-                  LinkedList<String> timeslots = convertHourstoSlots(instructor_hours);
-                  int[] slots = getSlotsIndicies(timeslots.getFirst() , timeslots.getLast());
-                  int index1 = slots[0];
-                  int index2 = slots[1];
 
                       Course course = new  Course(course_id, course_name, Integer.parseInt(num_credits),Integer.parseInt(num_sections),Integer.parseInt(num_sessions), instructor_name,
-                                instructor_days, index1, index2, conflicting_courses , course_type ,Integer.parseInt(num_of_slots));
+                                instructor_days, index1, index2, conflicting_courses , course_type , calculateSlots(session_time));
 
         
                       Courses.put(UUID.randomUUID() , course);
@@ -84,6 +86,33 @@ public class FileReader {
         fis.close();
 
         return Courses;
+    }
+
+    public static int calculateSlots(String duration) {
+        String[] parts = duration.split("\s+");
+
+        int hours = 0;
+        int minutes = 0;
+
+        for (int i = 0; i < parts.length; i++) {
+            if (parts[i].equalsIgnoreCase("hour")  || parts[i].equals(equalsIgnoreCase"hours")) {
+                hours = Integer.parseInt(parts[i - 1]);
+            } else if (parts[i].equalsIgnoreCase("min")  parts[i].equalsIgnoreCase("mins") || parts[i].equals(equalsIgnoreCase"minutes")) {
+                minutes = Integer.parseInt(parts[i - 1]);
+            }
+            else if(parts[i].equalsIgnoreCase("internship") || parts[i].equalsIgnoreCase("no")){
+                return 0;
+            }
+        }
+
+        int totalMinutes = (hours * 60) + minutes;
+        int slots = totalMinutes / 75;
+
+        if(sltos == 0){
+            slots == 1;
+        }
+
+        return slots;
     }
 
     private boolean isFirstSheet(Sheet sheet) {
