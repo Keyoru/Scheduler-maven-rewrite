@@ -29,8 +29,8 @@ public class FileReader {
         Workbook workbook = new XSSFWorkbook(fis);
 
         // Get the specific sheet by name
-        Sheet sheet1 = workbook.getSheetAt(0);
-        Sheet sheet2 = workbook.getSheetAt(1);
+        Sheet sheet1 = workbook.getSheetAt(1);
+        Sheet sheet2 = workbook.getSheetAt(0);
 
         if (sheet1 != null && sheet2 != null) {
             // Iterate over rows in both sheets simultaneously
@@ -43,9 +43,9 @@ public class FileReader {
                     // Read data from the rows and create Course object
                     String course_id = row1.getCell(0).getStringCellValue();
                     String course_name = row1.getCell(1).getStringCellValue();
-                    String num_credits = row1.getCell(2).getStringCellValue();
-                    String num_sections = row1.getCell(3).getStringCellValue();
-                    String num_sessions = row1.getCell(4).getStringCellValue();
+                    int num_credits = (int)row1.getCell(2).getNumericCellValue();
+                    int num_sections = (int)row1.getCell(3).getNumericCellValue();
+                    int num_sessions = (int)row1.getCell(4).getNumericCellValue();
                     String instructor_name = row1.getCell(5).getStringCellValue();
                     String instructor_days = row1.getCell(6).getStringCellValue();
                     String instructor_hours = row1.getCell(7).getStringCellValue();
@@ -73,7 +73,7 @@ public class FileReader {
 
               
 
-                      course course = new  course(course_id, course_name, Integer.parseInt(num_credits),Integer.parseInt(num_sections),Integer.parseInt(num_sessions), instructor_name,
+                      course course = new  course(course_id, course_name, num_credits,num_sections,num_sessions, instructor_name,
                       Instructor_days, index1, index2, conflicting_courses , course_type , calculateSlots(session_time));
 
         
@@ -165,7 +165,7 @@ public class FileReader {
 
     private LinkedList<String> Split_Days(String instructors_day){
         LinkedList<String> slots = new LinkedList<String>();
-        String[] hours = instructors_day.split("and");
+        String[] hours = instructors_day.split("/");
 
         for (String hour : hours) {
             slots.add(hour.trim());
