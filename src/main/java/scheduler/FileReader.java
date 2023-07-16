@@ -1,4 +1,5 @@
 package scheduler;
+import java.io.*;
 import java.io.FileInputStream;
 import java.io.IOException;
 import java.time.LocalTime;
@@ -12,22 +13,24 @@ import java.time.format.DateTimeFormatter;
 import org.apache.poi.ss.usermodel.*;
 import org.apache.poi.xssf.usermodel.XSSFWorkbook;
 
-public class FileReader {
-    private String file;
+//testing 
 
-    public FileReader(String file) {
-        this.file = file;
+public class FileReader {
+    private File file;
+
+    public FileReader(File f) {
+        this.file = f;
     }
 
-    public Map<UUID, course> readCoursesFromSheet(String sheetName) throws IOException {
+    public HashMap<UUID, course> readCoursesFromSheet() throws IOException {
        HashMap<UUID, course> Courses = new HashMap<UUID, course>();
 
         FileInputStream fis = new FileInputStream(file);
         Workbook workbook = new XSSFWorkbook(fis);
 
         // Get the specific sheet by name
-        Sheet sheet1 = workbook.getSheetAt(0);
-        Sheet sheet2 = workbook.getSheetAt(1);
+        Sheet sheet1 = workbook.getSheetAt(1);
+        Sheet sheet2 = workbook.getSheetAt(0);
 
         if (sheet1 != null && sheet2 != null) {
             // Iterate over rows in both sheets simultaneously
@@ -40,45 +43,78 @@ public class FileReader {
                     // Read data from the rows and create Course object
                     String course_id = row1.getCell(0).getStringCellValue();
                     String course_name = row1.getCell(1).getStringCellValue();
-                    String num_credits = row1.getCell(2).getStringCellValue();
-                    String num_sections = row1.getCell(3).getStringCellValue();
-                    String num_sessions = row1.getCell(4).getStringCellValue();
+                    int num_credits = (int)row1.getCell(2).getNumericCellValue();
+                    int num_sections = (int)row1.getCell(3).getNumericCellValue();
+                    int num_sessions = (int)row1.getCell(4).getNumericCellValue();
                     String instructor_name = row1.getCell(5).getStringCellValue();
-                    LinkedList<Integer> instructor_days = new LinkedList<Integer>();
-                    instructor_days = getDayIndex(row1.getCell(6).getStringCellValue());
+                    String instructor_days = row1.getCell(6).getStringCellValue();
+                    String instructor_hours = row1.getCell(7).getStringCellValue();
 
-                    LinkedList<String> conflicting_courses = new LinkedList<String>();
-                    conflicting_courses = = row2.getCell(4).getStringCellValue();
-                    String course_type = row2.getCell(10).getStringCellValue();
-                    String num_of_slots = row2.getCell(11).getStringCellValue();
 
-                    LinkedList<String>Split_Days = Split_Days(instructors_day);
-                    LinkedList<Integer>instructor_days = new LinkedList<Integer>();
-
-                    for(int i=0;i<Split_Days.size();i++){
-                       instructor_days.add(getDayIndex(Split_Days.get(i)));
-                   }
-
-              
                   LinkedList<String> timeslots = convertHourstoSlots(instructor_hours);
                   int[] slots = getSlotsIndicies(timeslots.getFirst() , timeslots.getLast());
                   int index1 = slots[0];
                   int index2 = slots[1];
 
-                      Course course = new  Course(course_id, course_name, Integer.parseInt(num_credits),Integer.parseInt(num_sections),Integer.parseInt(num_sessions), instructor_name,
-                                instructor_days, index1, index2, conflicting_courses , course_type ,Integer.parseInt(num_of_slots));
+
+                    LinkedList<String>Split_Days = Split_Days(instructor_days);
+                    LinkedList<Integer>Instructor_days = new LinkedList<Integer>();
+
+                    for(int i=0;i<Split_Days.size();i++){
+                       Instructor_days.add(getDayIndex(Split_Days.get(i)));
+                   }
+
+                    String conflict_courses  = row2.getCell(0).getStringCellValue();
+                    LinkedList<String> conflicting_courses = Split_Days(conflict_courses);
+
+                    String course_type = row2.getCell(1).getStringCellValue();
+                    String session_time = row2.getCell(2).getStringCellValue();
+
+
+              
+
+                      course course = new  course(course_id, course_name, num_credits,num_sections,num_sessions, instructor_name,
+                      Instructor_days, index1, index2, conflicting_courses , course_type , calculateSlots(session_time));
 
         
                       Courses.put(UUID.randomUUID() , course);
                 }
             }
          }
-        } 
+         workbook.close();
+         fis.close();
+ 
+         return Courses;
+         }
+        
 
-        workbook.close();
-        fis.close();
 
-        return Courses;
+
+    public static int calculateSlots(String duration) {
+        String[] parts = duration.split("\\s+");
+
+        int hours = 0;
+        int minutes = 0;
+
+        for (int i = 0; i < parts.length; i++) {
+            if ( parts[i].equalsIgnoreCase("hour")  || parts[i].equalsIgnoreCase("hours") ) {
+                hours = Integer.parseInt(parts[i - 1]);
+            } else if (parts[i].equalsIgnoreCase("min") || parts[i].equalsIgnoreCase("mins") || parts[i].equalsIgnoreCase("minutes")) {
+                minutes = Integer.parseInt(parts[i - 1]);
+            }
+            else if(parts[i].equalsIgnoreCase("internship") || parts[i].equalsIgnoreCase("no")){
+                return 0;
+            }
+        }
+
+        int totalMinutes = (hours * 60) + minutes;
+        int slots = totalMinutes / 75;
+
+        if(slots == 0){
+            slots = 1;
+        }
+
+        return slots;
     }
 
     private boolean isFirstSheet(Sheet sheet) {
@@ -89,9 +125,12 @@ public class FileReader {
            for (Cell cell : firstRow) {
              // Check the header value of a specific column
             if (cell.getColumnIndex() == 0 && cell.getStringCellValue().equalsIgnoreCase("course code")) {
-       return true;
-      }
-     }
+             return true;
+           }
+           else{
+            break;
+           }
+         }
     }
    return false;
   }
@@ -126,7 +165,7 @@ public class FileReader {
 
     private LinkedList<String> Split_Days(String instructors_day){
         LinkedList<String> slots = new LinkedList<String>();
-        String[] hours = instructors_day.split("and");
+        String[] hours = instructors_day.split("/");
 
         for (String hour : hours) {
             slots.add(hour.trim());
@@ -191,4 +230,4 @@ public class FileReader {
         // Return the viable slots as an array
         return new int[]{startSlot, endSlot};
     }
- }
+}
