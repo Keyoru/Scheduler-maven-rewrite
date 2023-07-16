@@ -11,6 +11,13 @@ public class App {
             FileReader file = new FileReader(new File("scheduler-input-draf1.xlsx"));
             HashMap<UUID, course> Courses = file.readCoursesFromSheet();
             
+            courseScheduler scheduler = new courseScheduler();
+
+            scheduler.courseMap = Courses;
+
+            scheduler.ScheduleCourses();
+            scheduler.displaySchedule();
+
 
     }
 }
