@@ -97,7 +97,7 @@ public class FileReader {
         for (int i = 0; i < parts.length; i++) {
             if (parts[i].equalsIgnoreCase("hour")  || parts[i].equals(equalsIgnoreCase"hours")) {
                 hours = Integer.parseInt(parts[i - 1]);
-            } else if (parts[i].equalsIgnoreCase("min")  parts[i].equalsIgnoreCase("mins") || parts[i].equals(equalsIgnoreCase"minutes")) {
+            } else if (parts[i].equalsIgnoreCase("min") || parts[i].equalsIgnoreCase("mins") || parts[i].equals(equalsIgnoreCase"minutes")) {
                 minutes = Integer.parseInt(parts[i - 1]);
             }
             else if(parts[i].equalsIgnoreCase("internship") || parts[i].equalsIgnoreCase("no")){
