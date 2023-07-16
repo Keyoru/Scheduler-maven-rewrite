@@ -46,7 +46,13 @@ public class FileReader {
                     String num_sections = row1.getCell(3).getStringCellValue();
                     String num_sessions = row1.getCell(4).getStringCellValue();
                     String instructor_name = row1.getCell(5).getStringCellValue();
+
                     LinkedList<Integer> instructor_days = new LinkedList<Integer>();
+                    LinkedList<String> days = Split_Days(String instructors_day);
+                    for(String s : days){
+                        instructor_days.add(getDayIndex(String day));
+                    }
+
                     instructor_days = getDayIndex(row1.getCell(6).getStringCellValue());
 
                     LinkedList<String> conflicting_courses = new LinkedList<String>();
