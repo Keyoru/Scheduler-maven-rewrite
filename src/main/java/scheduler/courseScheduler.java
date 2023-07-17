@@ -409,7 +409,7 @@ private boolean attemptEqualSpreadSchedule(UUID courseId) {
 
     public void outputExcel(){
         
-        String[] timeSlots = {"08:00", "09:15", "10:30", "11:45", "13:00", "14:15"};
+        String[] timeSlots = {"08:00", "09:30", "11:00", "13:00", "14:30", "16:00"};
         String[] daysOfWeek = {"Monday", "Tuesday", "Wednesday", "Thursday", "Friday"};
 
         // Create the header row with days of the week
