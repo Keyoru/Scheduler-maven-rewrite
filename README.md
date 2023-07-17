@@ -7,6 +7,7 @@ This section reads the course objects from the excel file line by line and uses 
 
 The Excel file is written in 2 sheets
 E.G:
+
 sheet 1:
 ![Pasted image 20230717122327](https://github.com/Keyoru/Scheduler-maven-rewrite/assets/120273123/ffce1796-db93-4269-8ee2-5442e3cafd16)
 
@@ -22,6 +23,7 @@ using military time
 **WIP:** implement method to automatically convert invalid times to valid times
 
 sheet 2:
+
 ![Pasted image 20230717122342](https://github.com/Keyoru/Scheduler-maven-rewrite/assets/120273123/4106ac4d-8375-408e-936b-632c269c2e56)
 
 this section also handles transforming information such as the days into equivalent attributes that will be used in the logic,   
