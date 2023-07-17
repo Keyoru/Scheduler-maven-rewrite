@@ -67,31 +67,9 @@ Our current plan is to have this class export this 2D array structure into some 
 
 ### Front End (WIP)
 
-JS HTML CSS
-current idea is to have the java course scheduler section export the sorted courses into some form of database system, this will not be displayed to the user and only used to communicate this information to the front end
-then the front end will take this formatted and sorted data and display it.
+will be a java GUI
+structured similar to the excel file
+each slot is an interactable button
+clicking on that button will open a separate window that has the information of the courses scheduled in that time slot
 
-* currently unsure of what database system to use and exactly how to display the data in the front end.
 
-
-# Encountered Issues
-
-### In the File Reader section
-currently this section is designed to read from 1 Excel sheet containing all the course information in a specific format.
-For example on each row we would have on each cell
-- CourseID 
-- Number of credits
-- number of sessions
-- number of sections
-- Instructor name
-- Instructor days
-- Instructor hours
-etc...
-
-With the way this section is structured the excel file has to be formatted in this specific way.
-And if the excel file is going to be 2 separate sheets each with its own information we would need to know exactly how those 2 sheets are formatted in order to possibly combine them (using some script) into 1 sheet  in the Format we desire and the File Reader will read from.
-
-### Course Scheduler
-There are 2 main problems we have encountered in this section:
-1. Current features may not function exactly as client desires; since there are alot of specific edge cases that would need to be discussed in detail in order to figure out how the program should handle them. Instead we wrote the logic according to what we think is best **limited by our programming ability**
-2. Current features seem to function correctly but alot more testing is required to ensure no bugs or unaccounted for edge cases. We are already testing with many different combinations of courses and availabilities. However issues are constantly arising.
