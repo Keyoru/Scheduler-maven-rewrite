@@ -10,6 +10,7 @@ public class App {
         public static void main(String[] args) throws IOException {
             FileReader file = new FileReader(new File("scheduler-input-draf1.xlsx"));
             HashMap<UUID, course> Courses = file.readCoursesFromSheet();
+            System.out.println(Courses.toString());
             
 
     }
