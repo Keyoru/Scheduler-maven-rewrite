@@ -40,7 +40,6 @@ public class courseScheduler {
     PrintWriter printWriter; 
     File logFile;
     
-    File outputFile;
     Workbook workbook;
     Sheet sheet;
 
@@ -49,16 +48,16 @@ public class courseScheduler {
         try {
 
             LocalDateTime currentTime = LocalDateTime.now();
-            DateTimeFormatter formatter = DateTimeFormatter.ofPattern("MM_dd_HH:mm");
+            DateTimeFormatter formatter = DateTimeFormatter.ofPattern("MM_dd_HH-mm");
             String timestamp = currentTime.format(formatter);
     
             String logFileName = "log_" + timestamp + ".txt";
-            logFile = new File(logFileName);
-            String outputFileName = "output_"+timestamp+".xlsx";
-            outputFile = new File(outputFileName);
+            logFile = new File("logs/"+logFileName);
+            String outputFileName = "Scheduler-output"+timestamp;
+    
     
             workbook = new XSSFWorkbook();
-            sheet = workbook.createSheet("Course Schedule");
+            sheet = workbook.createSheet(outputFileName);
 
             fileWriter = new FileWriter(logFile, true); // 'true' for appending to an existing file
             printWriter = new PrintWriter(fileWriter);
@@ -307,7 +306,6 @@ private boolean attemptEqualSpreadSchedule(UUID courseId) {
 
 
     private boolean attemptAnySchedule(UUID courseId) {
-
     
         for (int dayIndex: courseMap.get(courseId).instructorDays) {
             for (int i = courseMap.get(courseId).TimeSlotIndexstart; i < courseMap.get(courseId).TimeSlotIndexEnd && courseMap.get(courseId).sessionsScheduled < courseMap.get(courseId).numberOfSessions; i++) {
@@ -398,8 +396,6 @@ private boolean attemptEqualSpreadSchedule(UUID courseId) {
         }
         return true;
     }
-    
-    
 
 
     private static boolean canWorkWith(List<Integer> daypair, List<Integer> instructorDays) {
@@ -453,8 +449,13 @@ private boolean attemptEqualSpreadSchedule(UUID courseId) {
                     cell.setCellValue(cellValue);
                 }
             }
-        }        
-        try (FileOutputStream outputStream = new FileOutputStream("CourseSchedule.xlsx")) {
+        }
+        LocalDateTime currentTime = LocalDateTime.now();
+        DateTimeFormatter formatter = DateTimeFormatter.ofPattern("MM_dd_HH:mm");
+        String timestamp = currentTime.format(formatter);
+
+        String outputFileName = "Schedule_"+timestamp+".xlsx";        
+        try (FileOutputStream outputStream = new FileOutputStream("data/"+outputFileName)) {
             workbook.write(outputStream);
         } catch (IOException e) {
             e.printStackTrace();
