@@ -6,9 +6,6 @@ import java.time.LocalTime;
 import java.util.UUID;
 import java.util.HashMap;
 import java.util.LinkedList;
-import java.util.Map;
-import java.time.LocalTime;
-import java.time.format.DateTimeFormatter;
 
 import org.apache.poi.ss.usermodel.*;
 import org.apache.poi.xssf.usermodel.XSSFWorkbook;
@@ -57,7 +54,7 @@ public class FileReader {
                   int index2 = slots[1];
 
 
-                    LinkedList<String>Split_Days = Split_Days(instructor_days);
+                    LinkedList<String>Split_Days = Split_String(instructor_days,"/");
                     LinkedList<Integer>Instructor_days = new LinkedList<Integer>();
 
                     for(int i=0;i<Split_Days.size();i++){
@@ -65,7 +62,7 @@ public class FileReader {
                    }
 
                     String conflict_courses  = row2.getCell(0).getStringCellValue();
-                    LinkedList<String> conflicting_courses = Split_Days(conflict_courses);
+                    LinkedList<String> conflicting_courses = Split_String(conflict_courses,"/");
 
                     String course_type = row2.getCell(1).getStringCellValue();
                     String session_time = row2.getCell(2).getStringCellValue();
@@ -85,7 +82,7 @@ public class FileReader {
          fis.close();
  
          return Courses;
-         }
+    }
         
 
 
@@ -160,9 +157,9 @@ public class FileReader {
         return slots;
     }
 
-    private LinkedList<String> Split_Days(String instructors_day){
+    private LinkedList<String> Split_String(String LongString, String Splitter){ //splits long string according to 
         LinkedList<String> slots = new LinkedList<String>();
-        String[] hours = instructors_day.split("/");
+        String[] hours = LongString.split(Splitter);
 
         for (String hour : hours) {
             slots.add(hour.trim());
