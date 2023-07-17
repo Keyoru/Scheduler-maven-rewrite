@@ -1,0 +1,127 @@
+Adding course CHEM201
+adding course CHEM201
+Start timeslot Index = 0
+End timeslot Index = 4
+Days[0, 1, 3]
+
+
+Adding course MTH301
+adding course MTH301
+Start timeslot Index = 1
+End timeslot Index = 5
+Days[1, 3, 4]
+
+
+Adding course ENG202
+adding course ENG202
+Start timeslot Index = 1
+End timeslot Index = 6
+Days[1, 2, 3]
+
+
+Adding course BIO202
+adding course BIO202
+Start timeslot Index = 3
+End timeslot Index = 5
+Days[1, 4]
+
+
+Adding course CHEM101
+adding course CHEM101
+Start timeslot Index = 2
+End timeslot Index = 5
+Days[0, 1, 2]
+
+
+Adding course CSE202
+adding course CSE202
+Start timeslot Index = 2
+End timeslot Index = 5
+Days[1, 2]
+
+
+Adding course PHY301
+adding course PHY301
+Start timeslot Index = 2
+End timeslot Index = 4
+Days[0, 1, 4]
+
+
+Adding course CSE401
+adding course CSE401
+Start timeslot Index = 3
+End timeslot Index = 6
+Days[2, 3, 4]
+
+
+Adding course MTH202
+Adding course CSE301
+adding course CSE301
+Start timeslot Index = 3
+End timeslot Index = 6
+Days[2, 3, 4]
+
+
+Adding course PHY101
+adding course PHY101
+Start timeslot Index = 1
+End timeslot Index = 5
+Days[2, 3, 4]
+
+
+Adding course BIO101
+adding course BIO101
+Start timeslot Index = 2
+End timeslot Index = 4
+Days[3, 4]
+
+
+Adding course ENG102
+adding course ENG102
+Start timeslot Index = 1
+End timeslot Index = 6
+Days[0, 2, 4]
+
+
+Adding course ENG101
+adding course ENG101
+Start timeslot Index = 5
+End timeslot Index = 6
+Days[4]
+
+
+Adding course MTH101
+adding course MTH101
+Start timeslot Index = 0
+End timeslot Index = 3
+Days[0, 1]
+
+
+Adding course MTH201
+adding course MTH201
+Start timeslot Index = 0
+End timeslot Index = 4
+Days[0, 3]
+
+
+Adding course CSE101
+adding course CSE101
+Start timeslot Index = 0
+End timeslot Index = 2
+Days[0, 2]
+
+
+Adding course BIO301
+adding course BIO301
+Start timeslot Index = 3
+End timeslot Index = 5
+Days[2, 3]
+
+
+Adding course ENG301
+adding course ENG301
+Start timeslot Index = 1
+End timeslot Index = 6
+Days[1, 2, 4]
+
+

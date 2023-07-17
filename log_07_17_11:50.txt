@@ -1,0 +1,16 @@
+Adding course CSE101
+Adding course ENG101
+adding course ENG101
+Start timeslot Index = 5
+End timeslot Index = 6
+Days[4]
+
+
+Adding course MTH202
+Adding course BIO101
+adding course BIO101
+Start timeslot Index = 2
+End timeslot Index = 4
+Days[3, 4]
+
+

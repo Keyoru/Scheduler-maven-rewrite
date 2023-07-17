@@ -16,7 +16,10 @@ import java.io.FileWriter;
 import java.io.IOException;
 import java.io.PrintWriter;
 import java.io.File;
+import java.io.FileOutputStream;
 
+import org.apache.poi.ss.usermodel.*;
+import org.apache.poi.xssf.usermodel.XSSFWorkbook;
 
 public class courseScheduler {
 
@@ -36,6 +39,10 @@ public class courseScheduler {
     FileWriter fileWriter;
     PrintWriter printWriter; 
     File logFile;
+    
+    File outputFile;
+    Workbook workbook;
+    Sheet sheet;
 
     courseScheduler() {
 
@@ -45,9 +52,13 @@ public class courseScheduler {
             DateTimeFormatter formatter = DateTimeFormatter.ofPattern("MM_dd_HH:mm");
             String timestamp = currentTime.format(formatter);
     
-            String fileName = "log_" + timestamp + ".txt";
-            logFile = new File(fileName);
+            String logFileName = "log_" + timestamp + ".txt";
+            logFile = new File(logFileName);
+            String outputFileName = "output_"+timestamp+".xlsx";
+            outputFile = new File(outputFileName);
     
+            workbook = new XSSFWorkbook();
+            sheet = workbook.createSheet("Course Schedule");
 
             fileWriter = new FileWriter(logFile, true); // 'true' for appending to an existing file
             printWriter = new PrintWriter(fileWriter);
@@ -398,6 +409,66 @@ private boolean attemptEqualSpreadSchedule(UUID courseId) {
             }
         }
         return true; // All working days are present in the pair
+    }
+
+
+    public void outputExcel(){
+        
+        String[] timeSlots = {"08:00", "09:15", "10:30", "11:45", "13:00", "14:15"};
+        String[] daysOfWeek = {"Monday", "Tuesday", "Wednesday", "Thursday", "Friday"};
+
+        // Create the header row with days of the week
+        Row headerRow = sheet.createRow(0);
+        for (int i = 0; i < daysOfWeek.length; i++) {
+            Cell cell = headerRow.createCell(i + 1);
+            cell.setCellValue(daysOfWeek[i]);
+        }
+
+        // Iterate over time slots and populate the sheet with course IDs
+        for (int i = 0; i < timeSlots.length; i++) {
+            Row row = sheet.createRow(i + 1);
+            Cell timeSlotCell = row.createCell(0);
+            timeSlotCell.setCellValue(timeSlots[i]);
+
+            for (int j = 0; j < daysOfWeek.length; j++) {
+                Cell cell = row.createCell(j + 1);
+
+                // Get the course ID for the specific time slot and day (replace this with your actual data retrieval logic)
+                String courseId = "";
+                String cellValue = "";
+                try {
+                    for(UUID courseUUID: schedule[j][i]){
+
+                        courseId = courseMap.get(courseUUID).courseID;
+                        cellValue += courseId + "\n";
+                                
+                    }
+                } catch (Exception e) {
+                    courseId = "";
+                }
+                
+                
+
+                // Set the course ID in the cell
+                if (courseId != null) {
+                    cell.setCellValue(cellValue);
+                }
+            }
+        }        
+        try (FileOutputStream outputStream = new FileOutputStream("CourseSchedule.xlsx")) {
+            workbook.write(outputStream);
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+
+        // Close the workbook
+        try {
+            workbook.close();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+
+        System.out.println("Excel file generated successfully!");
     }
 
 
