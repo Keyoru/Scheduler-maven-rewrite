@@ -28,7 +28,7 @@ public class App {
 
             scheduler.ScheduleCourses();
             scheduler.displaySchedule();
-
+            scheduler.outputExcel();
 
     }
 }

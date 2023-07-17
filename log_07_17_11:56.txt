@@ -1,0 +1,428 @@
+Adding course BUSN301
+attempt day pair
+slot av true
+slot av true
+added course to day: 1 time slot: 0
+scheduled sessions: 1
+added course to day: 3 time slot: 0
+scheduled sessions: 2
+2
+3
+pair false
+adding course BUSN301
+Start timeslot Index = 0
+End timeslot Index = 6
+Days[1, 3]
+slot av true
+added course to day: 1 time slot: 1
+scheduled sessions: 3
+slot av true
+added course to day: 3 time slot: 1
+scheduled sessions: 4
+
+
+equal spread true
+Adding course CMPS210
+attempt day pair
+slot av true
+slot av true
+added course to day: 0 time slot: 0
+scheduled sessions: 1
+added course to day: 2 time slot: 0
+scheduled sessions: 2
+2
+2
+adding course CMPS210
+Start timeslot Index = 0
+End timeslot Index = 3
+Days[0, 1, 2, 3]
+
+
+equal spread true
+Adding course PHYS110
+attempt day pair
+slot av true
+slot av true
+slot av true
+slot av true
+added course to day: 0 time slot: 0
+scheduled sessions: 1
+added course to day: 2 time slot: 0
+scheduled sessions: 2
+added course to day: 0 time slot: 1
+scheduled sessions: 3
+added course to day: 2 time slot: 1
+scheduled sessions: 4
+4
+3
+pairs true
+Adding course ART202
+attempt day pair
+slot av true
+slot av true
+slot av true
+slot av true
+added course to day: 1 time slot: 2
+scheduled sessions: 1
+added course to day: 3 time slot: 2
+scheduled sessions: 2
+added course to day: 1 time slot: 3
+scheduled sessions: 3
+added course to day: 3 time slot: 3
+scheduled sessions: 4
+4
+3
+pairs true
+Adding course MATH201
+attempt day pair
+slot av true
+slot av true
+slot av true
+slot av true
+added course to day: 1 time slot: 0
+scheduled sessions: 1
+added course to day: 3 time slot: 0
+scheduled sessions: 2
+added course to day: 1 time slot: 1
+scheduled sessions: 3
+added course to day: 3 time slot: 1
+scheduled sessions: 4
+4
+4
+pairs true
+Adding course ENG205
+attempt day pair
+slot av true
+slot av true
+added course to day: 0 time slot: 0
+scheduled sessions: 1
+added course to day: 2 time slot: 0
+scheduled sessions: 2
+2
+3
+pair false
+adding course ENG205
+Start timeslot Index = 0
+End timeslot Index = 6
+Days[0, 2]
+slot av true
+added course to day: 0 time slot: 1
+scheduled sessions: 3
+slot av true
+added course to day: 2 time slot: 1
+scheduled sessions: 4
+
+
+equal spread true
+Adding course HIST301
+attempt day pair
+slot av true
+slot av true
+slot av true
+slot av true
+slot av true
+slot av true
+added course to day: 1 time slot: 0
+scheduled sessions: 1
+added course to day: 3 time slot: 0
+scheduled sessions: 2
+added course to day: 1 time slot: 1
+scheduled sessions: 3
+added course to day: 3 time slot: 1
+scheduled sessions: 4
+added course to day: 1 time slot: 2
+scheduled sessions: 5
+added course to day: 3 time slot: 2
+scheduled sessions: 6
+6
+2
+pairs true
+Adding course CMPS101
+attempt day pair
+0
+3
+pair false
+0
+3
+pair false
+adding course CMPS101
+Start timeslot Index = 2
+End timeslot Index = 3
+Days[0, 2, 4]
+slot av true
+slot av true
+slot av true
+
+
+equal spread false
+slot av true
+slot av true
+slot av true
+0
+any false
+Adding course CHEM202
+attempt day pair
+slot av true
+slot av true
+slot av true
+slot av true
+added course to day: 1 time slot: 3
+scheduled sessions: 1
+added course to day: 3 time slot: 3
+scheduled sessions: 2
+added course to day: 1 time slot: 4
+scheduled sessions: 3
+added course to day: 3 time slot: 4
+scheduled sessions: 4
+4
+4
+pairs true
+Adding course PSYC301
+attempt day pair
+slot av true
+slot av true
+slot av true
+slot av true
+added course to day: 0 time slot: 2
+scheduled sessions: 1
+added course to day: 2 time slot: 2
+scheduled sessions: 2
+added course to day: 0 time slot: 3
+scheduled sessions: 3
+added course to day: 2 time slot: 3
+scheduled sessions: 4
+4
+3
+pairs true
+Adding course LANG202
+attempt day pair
+adding course LANG202
+Start timeslot Index = 0
+End timeslot Index = 6
+Days[4]
+slot av true
+slot av true
+slot av true
+added course to day: 4 time slot: 0
+added course to day: 4 time slot: 1
+slot av true
+slot av true
+slot av true
+added course to day: 4 time slot: 2
+added course to day: 4 time slot: 3
+
+
+Adding course HIST301
+attempt day pair
+slot av true
+slot av true
+slot av true
+slot av true
+slot av true
+slot av true
+added course to day: 1 time slot: 0
+scheduled sessions: 1
+added course to day: 3 time slot: 0
+scheduled sessions: 2
+added course to day: 1 time slot: 1
+scheduled sessions: 3
+added course to day: 3 time slot: 1
+scheduled sessions: 4
+added course to day: 1 time slot: 2
+scheduled sessions: 5
+added course to day: 3 time slot: 2
+scheduled sessions: 6
+6
+2
+pairs true
+Adding course ART202
+attempt day pair
+slot av true
+slot av true
+slot av true
+slot av true
+added course to day: 1 time slot: 0
+scheduled sessions: 1
+added course to day: 3 time slot: 0
+scheduled sessions: 2
+added course to day: 1 time slot: 1
+scheduled sessions: 3
+added course to day: 3 time slot: 1
+scheduled sessions: 4
+4
+3
+pairs true
+Adding course BUSN301
+attempt day pair
+slot av true
+slot av true
+added course to day: 1 time slot: 0
+scheduled sessions: 1
+added course to day: 3 time slot: 0
+scheduled sessions: 2
+2
+3
+pair false
+adding course BUSN301
+Start timeslot Index = 0
+End timeslot Index = 6
+Days[1, 3]
+slot av true
+added course to day: 1 time slot: 1
+scheduled sessions: 3
+slot av true
+added course to day: 3 time slot: 1
+scheduled sessions: 4
+
+
+equal spread true
+Adding course MATH201
+attempt day pair
+slot av true
+slot av true
+slot av true
+slot av true
+added course to day: 1 time slot: 2
+scheduled sessions: 1
+added course to day: 3 time slot: 2
+scheduled sessions: 2
+added course to day: 1 time slot: 3
+scheduled sessions: 3
+added course to day: 3 time slot: 3
+scheduled sessions: 4
+4
+4
+pairs true
+Adding course ENG205
+attempt day pair
+slot av true
+slot av true
+added course to day: 0 time slot: 0
+scheduled sessions: 1
+added course to day: 2 time slot: 0
+scheduled sessions: 2
+2
+3
+pair false
+adding course ENG205
+Start timeslot Index = 0
+End timeslot Index = 6
+Days[0, 2]
+slot av true
+added course to day: 0 time slot: 1
+scheduled sessions: 3
+slot av true
+added course to day: 2 time slot: 1
+scheduled sessions: 4
+
+
+equal spread true
+Adding course PSYC301
+attempt day pair
+slot av true
+slot av true
+slot av true
+slot av true
+added course to day: 0 time slot: 2
+scheduled sessions: 1
+added course to day: 2 time slot: 2
+scheduled sessions: 2
+added course to day: 0 time slot: 3
+scheduled sessions: 3
+added course to day: 2 time slot: 3
+scheduled sessions: 4
+4
+3
+pairs true
+Adding course CMPS210
+attempt day pair
+slot av true
+slot av true
+added course to day: 0 time slot: 0
+scheduled sessions: 1
+added course to day: 2 time slot: 0
+scheduled sessions: 2
+2
+2
+adding course CMPS210
+Start timeslot Index = 0
+End timeslot Index = 3
+Days[0, 1, 2, 3]
+
+
+equal spread true
+Adding course CMPS101
+attempt day pair
+0
+3
+pair false
+0
+3
+pair false
+adding course CMPS101
+Start timeslot Index = 2
+End timeslot Index = 3
+Days[0, 2, 4]
+slot av true
+slot av true
+slot av true
+
+
+equal spread false
+slot av true
+slot av true
+slot av true
+0
+any false
+Adding course CHEM202
+attempt day pair
+slot av true
+slot av true
+slot av true
+slot av true
+added course to day: 1 time slot: 4
+scheduled sessions: 1
+added course to day: 3 time slot: 4
+scheduled sessions: 2
+added course to day: 1 time slot: 5
+scheduled sessions: 3
+added course to day: 3 time slot: 5
+scheduled sessions: 4
+4
+4
+pairs true
+Adding course PHYS110
+attempt day pair
+slot av true
+slot av true
+slot av true
+slot av true
+added course to day: 0 time slot: 0
+scheduled sessions: 1
+added course to day: 2 time slot: 0
+scheduled sessions: 2
+added course to day: 0 time slot: 1
+scheduled sessions: 3
+added course to day: 2 time slot: 1
+scheduled sessions: 4
+4
+3
+pairs true
+Adding course LANG202
+attempt day pair
+adding course LANG202
+Start timeslot Index = 0
+End timeslot Index = 6
+Days[4]
+slot av true
+slot av true
+slot av true
+added course to day: 4 time slot: 0
+added course to day: 4 time slot: 1
+slot av true
+slot av true
+slot av true
+added course to day: 4 time slot: 2
+added course to day: 4 time slot: 3
+
+
