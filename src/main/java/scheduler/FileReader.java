@@ -29,10 +29,14 @@ public class FileReader {
         Workbook workbook = new XSSFWorkbook(fis);
 
         // Get the specific sheet by name
-        Sheet sheet1 = workbook.getSheetAt(1);
-        Sheet sheet2 = workbook.getSheetAt(0);
+        Sheet sheet1 = workbook.getSheetAt(0);
+        Sheet sheet2 = workbook.getSheetAt(1);
 
-       
+       if(!isFirstSheet(sheet1)){
+        Sheet temp_Sheet = sheet1;
+        sheet1 = sheet2;
+        sheet2 = temp_Sheet;
+       }
 
         if (sheet1 != null && sheet2 != null) {
             // Iterate over rows in both sheets simultaneously
@@ -126,7 +130,7 @@ public class FileReader {
         // Iterate over cells in the first row
            for (Cell cell : firstRow) {
              // Check the header value of a specific column
-            if (cell.getColumnIndex() == 0 && cell.getStringCellValue().equalsIgnoreCase("course code")) {
+            if (cell.getStringCellValue().equalsIgnoreCase("course id")) {
              return true;
            }
            else{
