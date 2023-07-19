@@ -363,7 +363,7 @@ private boolean attemptEqualSpreadSchedule(UUID courseId) {
             for (UUID scheduledCourseUUID : schedule[dayIndex][slotIndex]) {
 
                 
-                if (courseMap.get(scheduledCourseUUID).instructorName.equals(courseMap.get(courseId).instructorName)) {
+                if (courseMap.get(scheduledCourseUUID).instructorName.equalsIgnoreCase(courseMap.get(courseId).instructorName)) {
                     return false;
                 }
     
