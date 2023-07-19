@@ -18,6 +18,7 @@ import java.io.PrintWriter;
 import java.io.File;
 import java.io.FileOutputStream;
 
+import org.apache.commons.compress.harmony.pack200.NewAttributeBands.Integral;
 import org.apache.poi.ss.usermodel.*;
 import org.apache.poi.xssf.usermodel.XSSFWorkbook;
 
@@ -64,10 +65,11 @@ public class courseScheduler {
             printWriter = new PrintWriter(fileWriter);
             courseMap = new HashMap<>();
 
-            // Initialize day pairs (M,W) and (T,Th)
+            // Initialize day pairs
+            dayPairs.add(List.of(2, 4)); // Wednesday, Friday
             dayPairs.add(List.of(0, 2)); // Monday, Wednesday
             dayPairs.add(List.of(1, 3)); // Tuesday, Thursday
-            dayPairs.add(List.of(2, 4)); // Wednesday, Friday
+            
 
             for(int i = 0;i < days;i++){
                 for(int j = 0; j < timeslots; j++){
@@ -167,23 +169,37 @@ public class courseScheduler {
 
 
 
-// TODO different lectures on different day pairs or times if possible
-private boolean attemptDayPairSchedule(UUID courseId) {
-    System.out.println("attempt day pair");
-    course course = courseMap.get(courseId);
+    // TODO different lectures on different day pairs or times if possible
+    private boolean attemptDayPairSchedule(UUID courseId) {
+        System.out.println("attempt day pair");
+        course course = courseMap.get(courseId);
+        
+        List<List<Integer>> availableDayPairs = new ArrayList<>();
 
-    for (List<Integer> dayPair : dayPairs) {
-        if (canWorkWith(dayPair, courseMap.get(courseId).instructorDays)) {
+        try{
+
+            String scheduledCourseid = courseMap.get(courseId).courseID;
+            String[] scheduledCourseSplit = scheduledCourseid.split("-");
+            int scheduledCourseLectureNB = Integer.parseInt(scheduledCourseSplit[1]);
+
+            List<Integer> dayPair = getNextDayPair(scheduledCourseLectureNB);
+            availableDayPairs.add(dayPair);
+        }catch(Exception e){
+            
+        }
+        for (List<Integer> dayPair : dayPairs) {
+            if (canWorkWith(dayPair, courseMap.get(courseId).instructorDays)) {
+                availableDayPairs.add(dayPair);
+            }
+        } 
+
+        for(List<Integer> dayPair: availableDayPairs){
             int pairSessions = course.numberOfSessions / 2;
-
-
             int dayIndex1 = dayPair.get(0);
             int dayIndex2 = dayPair.get(1);
             int timeSlotIndex = course.TimeSlotIndexstart;
-
             while (courseMap.get(courseId).sessionsScheduled < pairSessions && timeSlotIndex <= course.TimeSlotIndexEnd - course.nbOfSlots) {
                 boolean canSchedule = true;
-
                 for (int session = 0; session < course.nbOfSlots && courseMap.get(courseId).sessionsScheduled < pairSessions; session++) {
                     for (int slot = 0; slot < course.nbOfSlots; slot++) {
                         if (!isSlotAvailable(courseId, dayIndex1, timeSlotIndex + slot) ||
@@ -192,7 +208,6 @@ private boolean attemptDayPairSchedule(UUID courseId) {
                             break;
                         }
                     }
-
                     if (canSchedule) {
                         for (int slot = 0; slot < course.nbOfSlots; slot++) {
                             scheduleCourseInSlot(courseId, dayIndex1, timeSlotIndex + slot);
@@ -202,7 +217,6 @@ private boolean attemptDayPairSchedule(UUID courseId) {
                         break;
                     }
                 }
-
                 timeSlotIndex++;
             }
             System.out.println(courseMap.get(courseId).sessionsScheduled);
@@ -213,10 +227,9 @@ private boolean attemptDayPairSchedule(UUID courseId) {
                 System.out.println("pair false");
             }
         }
+    
+     return false;
     }
-
-    return false;
-}
     
     
     
@@ -399,7 +412,13 @@ private boolean attemptEqualSpreadSchedule(UUID courseId) {
         return true;
     }
     
+
+    private List<Integer> getNextDayPair(int lectureIndex) {
+        // Assumes dayPairs is a list containing pairs of day indices, e.g., [[0, 2], [1, 3], [2, 4]]
+        return dayPairs.get(lectureIndex % dayPairs.size());
+    }
     
+        
 
 
     private static boolean canWorkWith(List<Integer> daypair, List<Integer> instructorDays) {

@@ -1,0 +1,7 @@
+Adding course CSE101
+adding course CSE101
+Start timeslot Index = 0
+End timeslot Index = 2
+Days[0, 1, 2, 3, 4]
+
+

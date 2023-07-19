@@ -9,11 +9,11 @@ public class App {
         public static void main(String[] args) {
 
             courseScheduler scheduler = new courseScheduler();
-            LinkedList<Integer> instructorDays1 = new LinkedList<>(List.of(0, 2)); 
+            LinkedList<Integer> instructorDays1 = new LinkedList<>(List.of(0, 1, 2, 3, 4)); 
             LinkedList<String> conflictingCourses1 = new LinkedList<>(List.of("MTH202"));
-            course course1 = new course("CSE101", "Course 1", 3, 1, 2,
+            course course1 = new course("CSE101", "Course 1", 3, 2, 2,
                     "John Doe", instructorDays1, 0, 2, conflictingCourses1,
-                    "Type 1", 2);
+                    "Type 1", 1);
             System.out.println(course1.TimeSlotIndexEnd);
             LinkedList<Integer> instructorDays2 = new LinkedList<>(List.of(0, 2)); // Monday, Wednesday
             LinkedList<String> conflictingCourses2 = new LinkedList<>(List.of("CSE101"));
@@ -113,25 +113,25 @@ public class App {
                     "Type 20", 1);  
             
             scheduler.courseMap.put(UUID.randomUUID(), course1);
-            scheduler.courseMap.put(UUID.randomUUID(), course2);
-            scheduler.courseMap.put(UUID.randomUUID(), course3);
-            scheduler.courseMap.put(UUID.randomUUID(), course4);
-            scheduler.courseMap.put(UUID.randomUUID(), course5);
-            scheduler.courseMap.put(UUID.randomUUID(), course6);
-            scheduler.courseMap.put(UUID.randomUUID(), course7);
-            scheduler.courseMap.put(UUID.randomUUID(), course8);
-            scheduler.courseMap.put(UUID.randomUUID(), course9);
-            scheduler.courseMap.put(UUID.randomUUID(), course10);
-            scheduler.courseMap.put(UUID.randomUUID(), course11);
-            scheduler.courseMap.put(UUID.randomUUID(), course12);
-            scheduler.courseMap.put(UUID.randomUUID(), course13);
-            scheduler.courseMap.put(UUID.randomUUID(), course14);
-            scheduler.courseMap.put(UUID.randomUUID(), course15);
-            scheduler.courseMap.put(UUID.randomUUID(), course16);
-            scheduler.courseMap.put(UUID.randomUUID(), course17);
-            scheduler.courseMap.put(UUID.randomUUID(), course18);
-            scheduler.courseMap.put(UUID.randomUUID(), course19);
-            scheduler.courseMap.put(UUID.randomUUID(), course20);
+            //scheduler.courseMap.put(UUID.randomUUID(), course2);
+            //scheduler.courseMap.put(UUID.randomUUID(), course3);
+            //scheduler.courseMap.put(UUID.randomUUID(), course4);
+            //scheduler.courseMap.put(UUID.randomUUID(), course5);
+            //scheduler.courseMap.put(UUID.randomUUID(), course6);
+            //scheduler.courseMap.put(UUID.randomUUID(), course7);
+            //scheduler.courseMap.put(UUID.randomUUID(), course8);
+            //scheduler.courseMap.put(UUID.randomUUID(), course9);
+            //scheduler.courseMap.put(UUID.randomUUID(), course10);
+            //scheduler.courseMap.put(UUID.randomUUID(), course11);
+            //scheduler.courseMap.put(UUID.randomUUID(), course12);
+            //scheduler.courseMap.put(UUID.randomUUID(), course13);
+            //scheduler.courseMap.put(UUID.randomUUID(), course14);
+            //scheduler.courseMap.put(UUID.randomUUID(), course15);
+            //scheduler.courseMap.put(UUID.randomUUID(), course16);
+            //scheduler.courseMap.put(UUID.randomUUID(), course17);
+            //scheduler.courseMap.put(UUID.randomUUID(), course18);
+            //scheduler.courseMap.put(UUID.randomUUID(), course19);
+            //scheduler.courseMap.put(UUID.randomUUID(), course20);
 
                 
             scheduler.ScheduleCourses();
