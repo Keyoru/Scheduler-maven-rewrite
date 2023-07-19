@@ -9,7 +9,7 @@ public class App {
         public static void main(String[] args) {
 
             courseScheduler scheduler = new courseScheduler();
-            LinkedList<Integer> instructorDays1 = new LinkedList<>(List.of(0, 1, 2, 3, 4)); 
+            LinkedList<Integer> instructorDays1 = new LinkedList<>(List.of(0, 1,2,3)); 
             LinkedList<String> conflictingCourses1 = new LinkedList<>(List.of("MTH202"));
             course course1 = new course("CSE101", "Course 1", 3, 2, 2,
                     "John Doe", instructorDays1, 0, 2, conflictingCourses1,

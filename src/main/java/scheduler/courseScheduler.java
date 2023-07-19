@@ -65,7 +65,7 @@ public class courseScheduler {
             printWriter = new PrintWriter(fileWriter);
             courseMap = new HashMap<>();
 
-            // Initialize day pairs
+            // Initialize day pairs (M,W) and (T,Th)
             dayPairs.add(List.of(2, 4)); // Wednesday, Friday
             dayPairs.add(List.of(0, 2)); // Monday, Wednesday
             dayPairs.add(List.of(1, 3)); // Tuesday, Thursday
@@ -183,7 +183,9 @@ public class courseScheduler {
             int scheduledCourseLectureNB = Integer.parseInt(scheduledCourseSplit[1]);
 
             List<Integer> dayPair = getNextDayPair(scheduledCourseLectureNB);
-            availableDayPairs.add(dayPair);
+            if(canWorkWith(dayPair, course.instructorDays)){
+                availableDayPairs.add(dayPair);
+            }
         }catch(Exception e){
             
         }
