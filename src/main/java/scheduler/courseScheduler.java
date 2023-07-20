@@ -82,6 +82,10 @@ public class courseScheduler {
         }
     }
 
+    public LinkedList<course> getUnscheduledCourseHeap(){
+        return unscheduledCourseHeap;
+    }
+
     public void ScheduleCourses() {
         Set<UUID> courseIds = new HashSet<>(courseMap.keySet()); // without it this doesnt work idk why
         for (UUID courseId : courseIds) {
