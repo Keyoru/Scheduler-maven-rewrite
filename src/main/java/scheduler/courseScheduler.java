@@ -68,7 +68,9 @@ public class courseScheduler {
             System.out.println("An error occurred while writing to the log file: " + e.getMessage());
         }
     }
-
+    public LinkedList<course> getUnscheduledCourseHeap(){
+        return unscheduledCourseHeap;
+    }
     public void ScheduleCourses() {
         Set<UUID> courseIds = new HashSet<>(courseMap.keySet()); // without it this doesnt work idk why
         for (UUID courseId : courseIds) {
