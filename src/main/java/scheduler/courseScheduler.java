@@ -108,7 +108,7 @@ public class courseScheduler {
                courseMap.get(courseId).numberOfCredits,courseMap.get(courseId).numberOfSections,
                courseMap.get(courseId).numberOfSessions,courseMap.get(courseId).instructorName,
                courseMap.get(courseId).instructorDays,courseMap.get(courseId).TimeSlotIndexstart, courseMap.get(courseId).TimeSlotIndexEnd,courseMap.get(courseId).conflictingCourses,
-               courseMap.get(courseId).courseType,courseMap.get(courseId).nbOfSlots);
+               courseMap.get(courseId).courseType,courseMap.get(courseId).nbOfSlots, courseMap.get(courseId).duration);
 
                System.out.println(currentSection.courseID);
                 
