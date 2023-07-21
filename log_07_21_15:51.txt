@@ -1,0 +1,36 @@
+Adding course CSE101
+attempting day pair scheduling
+slot av true
+slot av true
+added course to day: 0 time slot: 0
+scheduled sessions: 1
+added course to day: 2 time slot: 0
+scheduled sessions: 2
+day pair successful (returned true @addCourse())
+Adding course MTH202
+attempting day pair scheduling
+pair false
+attempting equal spread schedule
+
+
+equal spread false
+attempting any schedule
+any schedule failed (didnt fully schedule)
+found conflict
+truetrueAdding course MTH202
+attempting day pair scheduling
+slot av true
+slot av true
+added course to day: 0 time slot: 0
+scheduled sessions: 1
+added course to day: 2 time slot: 0
+scheduled sessions: 2
+day pair successful (returned true @addCourse())
+Adding course CSE101
+attempting day pair scheduling
+slot av true
+slot av true
+added course to day: 0 time slot: 1
+scheduled sessions: 1
+added course to day: 2 time slot: 1
+scheduled sessions: 2
