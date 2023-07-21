@@ -29,7 +29,7 @@ public class user implements ActionListener {
 
 		courseScheduler scheduler = new courseScheduler();
 
-		for(UUID courseUUID:fileReader.CoursesQueue){
+		for (UUID courseUUID : fileReader.CoursesQueue) {
 			scheduler.enqueueCourse(Courses.get(courseUUID));
 		}
 
@@ -44,12 +44,10 @@ public class user implements ActionListener {
 		l.add("a");
 		l.add("test");
 
-
 		Border bo1 = BorderFactory.createLineBorder(Color.gray, 1);
 		Border bo2 = BorderFactory.createLineBorder(Color.LIGHT_GRAY, 1);
 
-		ImageIcon logo =  new ImageIcon("logo1.png");
-		
+		ImageIcon logo = new ImageIcon("logo1.png");
 
 		JLabel l1 = new JLabel();
 		l1.setIcon(logo);
@@ -105,9 +103,12 @@ public class user implements ActionListener {
 		l6.setVerticalTextPosition(JLabel.CENTER);
 		l6.setBorder(bo1);
 
-		
 		ArrayList<JLabel> days = new ArrayList<JLabel>();
-		days.add(l2);days.add(l3);days.add(l4);days.add(l5);days.add(l6);
+		days.add(l2);
+		days.add(l3);
+		days.add(l4);
+		days.add(l5);
+		days.add(l6);
 
 		JLabel l7 = new JLabel();
 		l7.setText("08:00");
@@ -164,7 +165,12 @@ public class user implements ActionListener {
 		l12.setBorder(bo2);
 
 		ArrayList<JLabel> timeSlots = new ArrayList<JLabel>();
-		timeSlots.add(l7);timeSlots.add(l8);timeSlots.add(l9);timeSlots.add(l10);timeSlots.add(l11);timeSlots.add(l12);
+		timeSlots.add(l7);
+		timeSlots.add(l8);
+		timeSlots.add(l9);
+		timeSlots.add(l10);
+		timeSlots.add(l11);
+		timeSlots.add(l12);
 
 		JPanel first = new JPanel();
 		first.setLayout(new GridLayout(1, 7));
@@ -205,83 +211,79 @@ public class user implements ActionListener {
 		four.setLayout(new GridLayout(1, 7));
 		four.add(l12);
 
-		
-
-
 		int num = 1;
 		for (int i = 0; i < 6; i++) {
 			for (int j = 0; j < 5; j++) {
-				    JFrame f1 = new JFrame();
-					f1.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-					f1.setVisible(false);
-					JButton b1 = new JButton();
-					b1.addActionListener(u -> f1.setVisible(true));
-					b1.setFocusable(false);
-					b1.setFont(new Font("Comic Sans", Font.PLAIN, 10));
-					b1.setBackground(Color.LIGHT_GRAY);
-					b1.setBorder(bo1);
-				
-					String sInfo = "<html>" ;
-					JLabel slotInfo = new JLabel();
-					if (num< 6) {
-						PanelTimeSlotOne.add(b1);
-						
-					} else if (num < 11) {
-						PanelTimeSlotTwo.add(b1);
-					} else if (num < 16) {
-						eleven.add(b1);
-					} else if (num < 21) {
-						one.add(b1);
-					} else if (num < 26) {
-						two.add(b1);
-					} else if (num < 31) {
-						four.add(b1);
-					}
-					num++;
-					
-					   sInfo = days.get(j).getText() + " at " + timeSlots.get(i).getText();
-						slotInfo.setText(sInfo);
-						slotInfo.setFont(new Font("Comic Sans", Font.BOLD, 20));
-						slotInfo.setBackground(Color.LIGHT_GRAY);
-						slotInfo.setOpaque(true);
-						slotInfo.setBorder(bo2);
-						f1.add(slotInfo);
-					
+				JFrame f1 = new JFrame();
+				f1.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+				f1.setVisible(false);
+				JButton b1 = new JButton();
+				b1.addActionListener(u -> f1.setVisible(true));
+				b1.setFocusable(false);
+				b1.setFont(new Font("Comic Sans", Font.PLAIN, 10));
+				b1.setBackground(Color.LIGHT_GRAY);
+				b1.setBorder(bo1);
+
+				String sInfo = "<html>";
+				JLabel slotInfo = new JLabel();
+				if (num < 6) {
+					PanelTimeSlotOne.add(b1);
+
+				} else if (num < 11) {
+					PanelTimeSlotTwo.add(b1);
+				} else if (num < 16) {
+					eleven.add(b1);
+				} else if (num < 21) {
+					one.add(b1);
+				} else if (num < 26) {
+					two.add(b1);
+				} else if (num < 31) {
+					four.add(b1);
+				}
+				num++;
+
+				sInfo = days.get(j).getText() + " at " + timeSlots.get(i).getText();
+				slotInfo.setText(sInfo);
+				slotInfo.setFont(new Font("Comic Sans", Font.BOLD, 20));
+				slotInfo.setBackground(Color.LIGHT_GRAY);
+				slotInfo.setOpaque(true);
+				slotInfo.setBorder(bo2);
+				f1.add(slotInfo);
+
 				JLabel ls1 = new JLabel();
 				f1.setLayout(new GridLayout(7, 1, 1, 1));
- 				String courseInfo = "<html>" ;
-				String moreInfo = "<html>" ;
+				String courseInfo = "<html>";
+				String moreInfo = "<html>";
 				try {
 					for (UUID courseUUID : scheduler.schedule[j][i]) {
 
-						
-						courseInfo += CourseMap.get(courseUUID).courseID+  "   By "+CourseMap.get(courseUUID).instructorName+"<br>" ;
-						moreInfo += CourseMap.get(courseUUID).courseID+  "   By "+CourseMap.get(courseUUID).instructorName+"<br>" ;
+						courseInfo += CourseMap.get(courseUUID).courseID + "   By "
+								+ CourseMap.get(courseUUID).instructorName + "<br>";
+						moreInfo += CourseMap.get(courseUUID).courseID + "   By "
+								+ CourseMap.get(courseUUID).instructorName + "<br>";
 					}
 
 					courseInfo += "</html>";
-					moreInfo +=  "</html>";
+					moreInfo += "</html>";
 					b1.setText(courseInfo);
 					ls1.setText(courseInfo);
-						ls1.setFont(new Font("Comic Sans", Font.BOLD, 20));
-						ls1.setBackground(Color.LIGHT_GRAY);
-						ls1.setOpaque(true);
-						ls1.setBorder(bo2);
-						f1.add(ls1);
+					ls1.setFont(new Font("Comic Sans", Font.BOLD, 20));
+					ls1.setBackground(Color.LIGHT_GRAY);
+					ls1.setOpaque(true);
+					ls1.setBorder(bo2);
+					f1.add(ls1);
 				} catch (Exception e) {
-					
+
 				}
 			}
 
 		}
 
-		//mwmJLabel 
+		// mwmJLabel
 
 		JPanel info = new JPanel();
 		info.setLayout(new GridLayout(7, 1));
 		info.setSize(750, 750);
-
-
 
 		JPanel grid = new JPanel();
 		grid.setLayout(new GridLayout(7, 1));
@@ -294,10 +296,6 @@ public class user implements ActionListener {
 		grid.add(two);
 		grid.add(four);
 
-
-
-		
-
 		JFrame main = new JFrame();
 		main.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		main.setTitle("By ASF");
@@ -305,10 +303,7 @@ public class user implements ActionListener {
 		main.setLayout(new GridLayout(1, 1, 15, 15));
 		main.setVisible(true);
 		main.add(grid);
-		//main.add(info);
-		
-		
-	
+		// main.add(info);
 
 	}
 
