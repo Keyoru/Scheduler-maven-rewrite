@@ -286,53 +286,6 @@ private boolean attemptEqualSpreadSchedule(UUID courseId) {
     }
 
 
-//    private boolean attemptEqualSpreadSchedule(UUID courseId) {
-//        System.out.println("attempt equal");
-//        int sessionsPerDay = courseMap.get(courseId).numberOfSessions / courseMap.get(courseId).instructorDays.size();
-//    
-//        // Calculate the effective number of days for scheduling
-//        int effectiveDays = Math.min(courseMap.get(courseId).instructorDays.size(), courseMap.get(courseId).numberOfSessions);
-//        
-//        
-//        int dayIndex = 0;
-//        int timeSlotIndex = courseMap.get(courseId).TimeSlotIndexstart;
-//    
-//        while (courseMap.get(courseId).sessionsScheduled <= courseMap.get(courseId).numberOfSessions) {
-//            System.out.println(courseMap.get(courseId).sessionsScheduled);
-//            if (dayIndex >= effectiveDays) {
-//                dayIndex = 0;
-//                timeSlotIndex++;
-//            }
-//    
-//            if (timeSlotIndex >= courseMap.get(courseId).TimeSlotIndexEnd)
-//                break;
-//    
-//            if (isSlotAvailable(courseId, courseMap.get(courseId).instructorDays.get(dayIndex), timeSlotIndex)) {
-//                if (courseMap.get(courseId).sessionsScheduled >= courseMap.get(courseId).numberOfSessions) {
-//                    break;
-//                }
-//                if (courseMap.get(courseId).nbOfSlots > 1 && areSlotsAvailable(courseId, courseMap.get(courseId).instructorDays.get(dayIndex), timeSlotIndex, timeSlotIndex + courseMap.get(courseId).nbOfSlots - 1)) {
-//                    scheduleCourseInSlots(courseId, courseMap.get(courseId).instructorDays.get(dayIndex), timeSlotIndex, timeSlotIndex + courseMap.get(courseId).nbOfSlots - 1);
-//                } else if (courseMap.get(courseId).nbOfSlots == 1) {
-//                    scheduleCourseInSlot(courseId, courseMap.get(courseId).instructorDays.get(dayIndex), timeSlotIndex);       
-//                }
-//                
-//            }
-//    
-//            dayIndex++;
-//        }
-//    
-//        if (courseMap.get(courseId).sessionsScheduled >= courseMap.get(courseId).numberOfSessions) {
-//            return true;
-//        } else {
-//            System.out.println("equal spread false");
-//            return false;
-//        }
-//    }
-    
-    
-
-
     private boolean attemptAnySchedule(UUID courseId) {
 
     
