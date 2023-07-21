@@ -14,10 +14,9 @@ public class App {
             course course1 = new course("CSE101", "Course 1", 3, 2, 2,
                     "John Doe", instructorDays1, 0, 6, conflictingCourses1,
                     "Type 1", 1);
-            System.out.println(course1.TimeSlotIndexEnd);
-            LinkedList<Integer> instructorDays2 = new LinkedList<>(List.of(0, 2)); // Monday, Wednesday
+            LinkedList<Integer> instructorDays2 = new LinkedList<>(List.of(0, 1, 2, 3)); // Monday, Wednesday
             LinkedList<String> conflictingCourses2 = new LinkedList<>(List.of("CSE101"));
-            course course2 = new course("MTH202", "Course 2", 4, 1, 2,
+            course course2 = new course("MTH202", "Course 2", 4, 2, 2,
                     "Jane Smith", instructorDays2, 0, 1, conflictingCourses2,
                     "Type 2", 1);
             LinkedList<Integer> instructorDays3 = new LinkedList<>(List.of(4)); // Friday
@@ -140,31 +139,25 @@ public class App {
             scheduler.displaySchedule();
 
             scheduler.moveUnscheduledCourses();
+
+            System.out.println();
+            
             scheduler.rescheduleConflicts();
             
 
+
+
+            System.out.println();
+            
             System.out.println();
             // Display the course schedule
             scheduler.displaySchedule();            
+            System.out.println("coursequeue");
             for(UUID courseUUID:scheduler.courseQueue){
                 System.out.print(scheduler.courseMap.get(courseUUID).courseID + " ");
             }
             System.out.println();
 
-            
 
-            //for(LinkedList<UUID>[] days:scheduler.schedule){
-            //    for(LinkedList<UUID> slots:days){
-            //        for(UUID courseUUID: slots){
-            //            for(int i = 0; i < 5; i++){
-            //                for(int j = 0; j < 6;j++){
-            //                    System.out.print(scheduler.courseMap.get(courseUUID).isScheduled[i][j]);
-            //                }
-            //                System.out.println();
-            //            }
-            //        }
-            //        System.out.println("~~~~~~~~~~~~~~~~~");
-            //    }
-            //}
         }
 }
