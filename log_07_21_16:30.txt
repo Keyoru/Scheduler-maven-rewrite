@@ -1,0 +1,1256 @@
+Adding course BUSN301
+attempting day pair scheduling
+slot av true
+slot av true
+added course to day: 1 time slot: 0
+scheduled sessions: 1
+added course to day: 3 time slot: 0
+scheduled sessions: 2
+pair false
+attempting equal spread schedule
+slot av true
+added course to day: 1 time slot: 1
+scheduled sessions: 3
+slot av true
+added course to day: 3 time slot: 1
+scheduled sessions: 4
+
+
+equal spread successful (returned true @addCourse())
+Adding course MATH201
+attempting day pair scheduling
+slot av true
+slot av true
+added course to day: 1 time slot: 0
+scheduled sessions: 1
+added course to day: 3 time slot: 0
+scheduled sessions: 2
+pair false
+attempting equal spread schedule
+slot av true
+added course to day: 1 time slot: 1
+scheduled sessions: 3
+slot av true
+added course to day: 1 time slot: 2
+scheduled sessions: 4
+slot av true
+added course to day: 3 time slot: 1
+scheduled sessions: 5
+slot av true
+added course to day: 3 time slot: 2
+scheduled sessions: 6
+
+
+equal spread successful (returned true @addCourse())
+Adding course ART202
+attempting day pair scheduling
+slot av true
+slot av true
+added course to day: 1 time slot: 2
+scheduled sessions: 1
+added course to day: 3 time slot: 2
+scheduled sessions: 2
+pair false
+attempting equal spread schedule
+slot av true
+added course to day: 1 time slot: 3
+scheduled sessions: 3
+slot av true
+added course to day: 3 time slot: 3
+scheduled sessions: 4
+
+
+equal spread successful (returned true @addCourse())
+Adding course LANG202
+attempting day pair scheduling
+attempting equal spread schedule
+slot av true
+added course to day: 4 time slot: 0
+scheduled sessions: 1
+slot av true
+added course to day: 4 time slot: 1
+scheduled sessions: 2
+
+
+equal spread successful (returned true @addCourse())
+Adding course CMPS101
+attempting day pair scheduling
+slot av true
+slot av true
+added course to day: 2 time slot: 2
+scheduled sessions: 1
+added course to day: 4 time slot: 2
+scheduled sessions: 2
+pair false
+pair false
+attempting equal spread schedule
+slot av true
+added course to day: 0 time slot: 2
+scheduled sessions: 3
+
+
+equal spread successful (returned true @addCourse())
+Adding course CMPS210
+attempting day pair scheduling
+slot av true
+slot av true
+added course to day: 0 time slot: 0
+scheduled sessions: 1
+added course to day: 2 time slot: 0
+scheduled sessions: 2
+attempting equal spread schedule
+
+
+equal spread successful (returned true @addCourse())
+Adding course ENG205
+attempting day pair scheduling
+slot av true
+slot av true
+added course to day: 0 time slot: 0
+scheduled sessions: 1
+added course to day: 2 time slot: 0
+scheduled sessions: 2
+pair false
+attempting equal spread schedule
+slot av true
+added course to day: 0 time slot: 1
+scheduled sessions: 3
+slot av true
+added course to day: 2 time slot: 1
+scheduled sessions: 4
+
+
+equal spread successful (returned true @addCourse())
+Adding course HIST301
+attempting day pair scheduling
+slot av true
+slot av true
+slot av true
+slot av true
+added course to day: 1 time slot: 0
+scheduled sessions: 1
+added course to day: 3 time slot: 0
+scheduled sessions: 2
+added course to day: 1 time slot: 1
+scheduled sessions: 3
+added course to day: 3 time slot: 1
+scheduled sessions: 4
+day pair successful (returned true @addCourse())
+Adding course CHEM202
+attempting day pair scheduling
+slot av true
+slot av true
+added course to day: 1 time slot: 3
+scheduled sessions: 1
+added course to day: 3 time slot: 3
+scheduled sessions: 2
+pair false
+attempting equal spread schedule
+slot av true
+added course to day: 1 time slot: 4
+scheduled sessions: 3
+slot av true
+added course to day: 1 time slot: 5
+scheduled sessions: 4
+slot av true
+added course to day: 3 time slot: 4
+scheduled sessions: 5
+slot av true
+added course to day: 3 time slot: 5
+scheduled sessions: 6
+
+
+equal spread successful (returned true @addCourse())
+Adding course PHYS110
+attempting day pair scheduling
+slot av true
+slot av true
+slot av true
+slot av true
+added course to day: 2 time slot: 2
+scheduled sessions: 1
+added course to day: 4 time slot: 2
+scheduled sessions: 2
+pair false
+pair false
+attempting equal spread schedule
+slot av true
+added course to day: 0 time slot: 0
+scheduled sessions: 3
+slot av true
+added course to day: 2 time slot: 0
+scheduled sessions: 4
+slot av true
+added course to day: 4 time slot: 3
+scheduled sessions: 5
+
+
+equal spread successful (returned true @addCourse())
+Adding course PSYC301
+attempting day pair scheduling
+slot av true
+slot av true
+added course to day: 2 time slot: 3
+scheduled sessions: 1
+added course to day: 4 time slot: 3
+scheduled sessions: 2
+pair false
+pair false
+attempting equal spread schedule
+slot av true
+added course to day: 0 time slot: 3
+scheduled sessions: 3
+slot av true
+added course to day: 2 time slot: 4
+scheduled sessions: 4
+slot av true
+added course to day: 4 time slot: 0
+scheduled sessions: 5
+
+
+Adding course BUSN301
+attempting day pair scheduling
+slot av true
+slot av true
+added course to day: 1 time slot: 0
+scheduled sessions: 1
+added course to day: 3 time slot: 0
+scheduled sessions: 2
+pair false
+attempting equal spread schedule
+slot av true
+added course to day: 1 time slot: 1
+scheduled sessions: 3
+slot av true
+added course to day: 3 time slot: 1
+scheduled sessions: 4
+
+
+equal spread successful (returned true @addCourse())
+Adding course HIST301
+attempting day pair scheduling
+slot av true
+slot av true
+slot av true
+slot av true
+added course to day: 1 time slot: 0
+scheduled sessions: 1
+added course to day: 3 time slot: 0
+scheduled sessions: 2
+added course to day: 1 time slot: 1
+scheduled sessions: 3
+added course to day: 3 time slot: 1
+scheduled sessions: 4
+day pair successful (returned true @addCourse())
+Adding course PHYS110
+attempting day pair scheduling
+slot av true
+slot av true
+added course to day: 2 time slot: 0
+scheduled sessions: 1
+added course to day: 4 time slot: 0
+scheduled sessions: 2
+pair false
+pair false
+attempting equal spread schedule
+slot av true
+added course to day: 0 time slot: 0
+scheduled sessions: 3
+slot av true
+added course to day: 2 time slot: 1
+scheduled sessions: 4
+slot av true
+added course to day: 4 time slot: 1
+scheduled sessions: 5
+
+
+equal spread successful (returned true @addCourse())
+Adding course CMPS210
+attempting day pair scheduling
+slot av true
+slot av true
+added course to day: 0 time slot: 0
+scheduled sessions: 1
+added course to day: 2 time slot: 0
+scheduled sessions: 2
+attempting equal spread schedule
+
+
+equal spread successful (returned true @addCourse())
+Adding course MATH201
+attempting day pair scheduling
+slot av true
+slot av true
+added course to day: 1 time slot: 0
+scheduled sessions: 1
+added course to day: 3 time slot: 0
+scheduled sessions: 2
+pair false
+attempting equal spread schedule
+slot av true
+added course to day: 1 time slot: 1
+scheduled sessions: 3
+slot av true
+added course to day: 1 time slot: 2
+scheduled sessions: 4
+slot av true
+added course to day: 3 time slot: 1
+scheduled sessions: 5
+slot av true
+added course to day: 3 time slot: 2
+scheduled sessions: 6
+
+
+equal spread successful (returned true @addCourse())
+Adding course ART202
+attempting day pair scheduling
+slot av true
+slot av true
+added course to day: 1 time slot: 2
+scheduled sessions: 1
+added course to day: 3 time slot: 2
+scheduled sessions: 2
+pair false
+attempting equal spread schedule
+slot av true
+added course to day: 1 time slot: 3
+scheduled sessions: 3
+slot av true
+added course to day: 3 time slot: 3
+scheduled sessions: 4
+
+
+equal spread successful (returned true @addCourse())
+Adding course PSYC301
+attempting day pair scheduling
+slot av true
+slot av true
+added course to day: 2 time slot: 0
+scheduled sessions: 1
+added course to day: 4 time slot: 0
+scheduled sessions: 2
+pair false
+pair false
+attempting equal spread schedule
+slot av true
+added course to day: 0 time slot: 0
+scheduled sessions: 3
+slot av true
+added course to day: 2 time slot: 1
+scheduled sessions: 4
+slot av true
+added course to day: 4 time slot: 1
+scheduled sessions: 5
+
+
+equal spread successful (returned true @addCourse())
+Adding course CHEM202
+attempting day pair scheduling
+slot av true
+slot av true
+added course to day: 1 time slot: 3
+scheduled sessions: 1
+added course to day: 3 time slot: 3
+scheduled sessions: 2
+pair false
+attempting equal spread schedule
+slot av true
+added course to day: 1 time slot: 4
+scheduled sessions: 3
+slot av true
+added course to day: 1 time slot: 5
+scheduled sessions: 4
+slot av true
+added course to day: 3 time slot: 4
+scheduled sessions: 5
+slot av true
+added course to day: 3 time slot: 5
+scheduled sessions: 6
+
+
+equal spread successful (returned true @addCourse())
+Adding course CMPS101
+attempting day pair scheduling
+slot av true
+slot av true
+added course to day: 2 time slot: 2
+scheduled sessions: 1
+added course to day: 4 time slot: 2
+scheduled sessions: 2
+pair false
+pair false
+attempting equal spread schedule
+slot av true
+added course to day: 0 time slot: 2
+scheduled sessions: 3
+
+
+equal spread successful (returned true @addCourse())
+Adding course ENG205
+attempting day pair scheduling
+slot av true
+slot av true
+added course to day: 0 time slot: 0
+scheduled sessions: 1
+added course to day: 2 time slot: 0
+scheduled sessions: 2
+pair false
+attempting equal spread schedule
+slot av true
+added course to day: 0 time slot: 1
+scheduled sessions: 3
+slot av true
+added course to day: 2 time slot: 1
+scheduled sessions: 4
+
+
+equal spread successful (returned true @addCourse())
+Adding course LANG202
+attempting day pair scheduling
+attempting equal spread schedule
+slot av true
+added course to day: 4 time slot: 0
+scheduled sessions: 1
+slot av true
+added course to day: 4 time slot: 1
+scheduled sessions: 2
+
+
+Adding course PSYC301
+attempting day pair scheduling
+slot av true
+slot av true
+added course to day: 2 time slot: 0
+scheduled sessions: 1
+added course to day: 4 time slot: 0
+scheduled sessions: 2
+pair false
+pair false
+attempting equal spread schedule
+slot av true
+added course to day: 0 time slot: 0
+scheduled sessions: 3
+slot av true
+added course to day: 2 time slot: 1
+scheduled sessions: 4
+slot av true
+added course to day: 4 time slot: 1
+scheduled sessions: 5
+
+
+equal spread successful (returned true @addCourse())
+Adding course CMPS210
+attempting day pair scheduling
+slot av true
+slot av true
+added course to day: 0 time slot: 0
+scheduled sessions: 1
+added course to day: 2 time slot: 0
+scheduled sessions: 2
+attempting equal spread schedule
+
+
+equal spread successful (returned true @addCourse())
+Adding course HIST301
+attempting day pair scheduling
+slot av true
+slot av true
+slot av true
+slot av true
+added course to day: 1 time slot: 0
+scheduled sessions: 1
+added course to day: 3 time slot: 0
+scheduled sessions: 2
+added course to day: 1 time slot: 1
+scheduled sessions: 3
+added course to day: 3 time slot: 1
+scheduled sessions: 4
+day pair successful (returned true @addCourse())
+Adding course CMPS101
+attempting day pair scheduling
+slot av true
+slot av true
+added course to day: 2 time slot: 2
+scheduled sessions: 1
+added course to day: 4 time slot: 2
+scheduled sessions: 2
+pair false
+pair false
+attempting equal spread schedule
+slot av true
+added course to day: 0 time slot: 2
+scheduled sessions: 3
+
+
+equal spread successful (returned true @addCourse())
+Adding course MATH201
+attempting day pair scheduling
+slot av true
+slot av true
+added course to day: 1 time slot: 0
+scheduled sessions: 1
+added course to day: 3 time slot: 0
+scheduled sessions: 2
+pair false
+attempting equal spread schedule
+slot av true
+added course to day: 1 time slot: 1
+scheduled sessions: 3
+slot av true
+added course to day: 1 time slot: 2
+scheduled sessions: 4
+slot av true
+added course to day: 3 time slot: 1
+scheduled sessions: 5
+slot av true
+added course to day: 3 time slot: 2
+scheduled sessions: 6
+
+
+equal spread successful (returned true @addCourse())
+Adding course ART202
+attempting day pair scheduling
+slot av true
+slot av true
+added course to day: 1 time slot: 0
+scheduled sessions: 1
+added course to day: 3 time slot: 0
+scheduled sessions: 2
+pair false
+attempting equal spread schedule
+slot av true
+added course to day: 1 time slot: 1
+scheduled sessions: 3
+slot av true
+added course to day: 3 time slot: 1
+scheduled sessions: 4
+
+
+equal spread successful (returned true @addCourse())
+Adding course LANG202
+attempting day pair scheduling
+attempting equal spread schedule
+slot av true
+added course to day: 4 time slot: 0
+scheduled sessions: 1
+slot av true
+added course to day: 4 time slot: 1
+scheduled sessions: 2
+
+
+equal spread successful (returned true @addCourse())
+Adding course ENG205
+attempting day pair scheduling
+slot av true
+slot av true
+added course to day: 0 time slot: 0
+scheduled sessions: 1
+added course to day: 2 time slot: 0
+scheduled sessions: 2
+pair false
+attempting equal spread schedule
+slot av true
+added course to day: 0 time slot: 1
+scheduled sessions: 3
+slot av true
+added course to day: 2 time slot: 1
+scheduled sessions: 4
+
+
+equal spread successful (returned true @addCourse())
+Adding course BUSN301
+attempting day pair scheduling
+slot av true
+slot av true
+added course to day: 1 time slot: 0
+scheduled sessions: 1
+added course to day: 3 time slot: 0
+scheduled sessions: 2
+pair false
+attempting equal spread schedule
+slot av true
+added course to day: 1 time slot: 1
+scheduled sessions: 3
+slot av true
+added course to day: 3 time slot: 1
+scheduled sessions: 4
+
+
+equal spread successful (returned true @addCourse())
+Adding course CHEM202
+attempting day pair scheduling
+slot av true
+slot av true
+added course to day: 1 time slot: 3
+scheduled sessions: 1
+added course to day: 3 time slot: 3
+scheduled sessions: 2
+pair false
+attempting equal spread schedule
+slot av true
+added course to day: 1 time slot: 4
+scheduled sessions: 3
+slot av true
+added course to day: 1 time slot: 5
+scheduled sessions: 4
+slot av true
+added course to day: 3 time slot: 4
+scheduled sessions: 5
+slot av true
+added course to day: 3 time slot: 5
+scheduled sessions: 6
+
+
+equal spread successful (returned true @addCourse())
+Adding course PHYS110
+attempting day pair scheduling
+slot av true
+slot av true
+slot av true
+slot av true
+added course to day: 2 time slot: 2
+scheduled sessions: 1
+added course to day: 4 time slot: 2
+scheduled sessions: 2
+pair false
+pair false
+attempting equal spread schedule
+slot av true
+added course to day: 0 time slot: 0
+scheduled sessions: 3
+slot av true
+added course to day: 2 time slot: 0
+scheduled sessions: 4
+slot av true
+added course to day: 4 time slot: 3
+scheduled sessions: 5
+
+
+Adding course LANG202
+attempting day pair scheduling
+attempting equal spread schedule
+slot av true
+added course to day: 4 time slot: 0
+scheduled sessions: 1
+slot av true
+added course to day: 4 time slot: 1
+scheduled sessions: 2
+
+
+equal spread successful (returned true @addCourse())
+Adding course CHEM202
+attempting day pair scheduling
+slot av true
+slot av true
+added course to day: 1 time slot: 0
+scheduled sessions: 1
+added course to day: 3 time slot: 0
+scheduled sessions: 2
+pair false
+attempting equal spread schedule
+slot av true
+added course to day: 1 time slot: 1
+scheduled sessions: 3
+slot av true
+added course to day: 1 time slot: 2
+scheduled sessions: 4
+slot av true
+added course to day: 3 time slot: 1
+scheduled sessions: 5
+slot av true
+added course to day: 3 time slot: 2
+scheduled sessions: 6
+
+
+equal spread successful (returned true @addCourse())
+Adding course PHYS110
+attempting day pair scheduling
+slot av true
+slot av true
+slot av true
+slot av true
+added course to day: 2 time slot: 2
+scheduled sessions: 1
+added course to day: 4 time slot: 2
+scheduled sessions: 2
+pair false
+pair false
+attempting equal spread schedule
+slot av true
+added course to day: 0 time slot: 0
+scheduled sessions: 3
+slot av true
+added course to day: 2 time slot: 0
+scheduled sessions: 4
+slot av true
+added course to day: 4 time slot: 3
+scheduled sessions: 5
+
+
+equal spread successful (returned true @addCourse())
+Adding course ENG205
+attempting day pair scheduling
+slot av true
+slot av true
+added course to day: 0 time slot: 0
+scheduled sessions: 1
+added course to day: 2 time slot: 0
+scheduled sessions: 2
+pair false
+attempting equal spread schedule
+slot av true
+added course to day: 0 time slot: 1
+scheduled sessions: 3
+slot av true
+added course to day: 2 time slot: 1
+scheduled sessions: 4
+
+
+equal spread successful (returned true @addCourse())
+Adding course BUSN301
+attempting day pair scheduling
+slot av true
+slot av true
+added course to day: 1 time slot: 0
+scheduled sessions: 1
+added course to day: 3 time slot: 0
+scheduled sessions: 2
+pair false
+attempting equal spread schedule
+slot av true
+added course to day: 1 time slot: 1
+scheduled sessions: 3
+slot av true
+added course to day: 3 time slot: 1
+scheduled sessions: 4
+
+
+equal spread successful (returned true @addCourse())
+Adding course CMPS210
+attempting day pair scheduling
+slot av true
+slot av true
+added course to day: 0 time slot: 0
+scheduled sessions: 1
+added course to day: 2 time slot: 0
+scheduled sessions: 2
+attempting equal spread schedule
+
+
+equal spread successful (returned true @addCourse())
+Adding course PSYC301
+attempting day pair scheduling
+slot av true
+slot av true
+added course to day: 2 time slot: 2
+scheduled sessions: 1
+added course to day: 4 time slot: 2
+scheduled sessions: 2
+pair false
+pair false
+attempting equal spread schedule
+slot av true
+added course to day: 0 time slot: 2
+scheduled sessions: 3
+slot av true
+added course to day: 2 time slot: 3
+scheduled sessions: 4
+slot av true
+added course to day: 4 time slot: 0
+scheduled sessions: 5
+
+
+equal spread successful (returned true @addCourse())
+Adding course ART202
+attempting day pair scheduling
+slot av true
+slot av true
+added course to day: 1 time slot: 2
+scheduled sessions: 1
+added course to day: 3 time slot: 2
+scheduled sessions: 2
+pair false
+attempting equal spread schedule
+slot av true
+added course to day: 1 time slot: 3
+scheduled sessions: 3
+slot av true
+added course to day: 3 time slot: 3
+scheduled sessions: 4
+
+
+equal spread successful (returned true @addCourse())
+Adding course CMPS101
+attempting day pair scheduling
+slot av true
+slot av true
+added course to day: 2 time slot: 2
+scheduled sessions: 1
+added course to day: 4 time slot: 2
+scheduled sessions: 2
+pair false
+pair false
+attempting equal spread schedule
+slot av true
+added course to day: 0 time slot: 2
+scheduled sessions: 3
+
+
+equal spread successful (returned true @addCourse())
+Adding course MATH201
+attempting day pair scheduling
+slot av true
+slot av true
+added course to day: 1 time slot: 0
+scheduled sessions: 1
+added course to day: 3 time slot: 0
+scheduled sessions: 2
+pair false
+attempting equal spread schedule
+slot av true
+added course to day: 1 time slot: 1
+scheduled sessions: 3
+slot av true
+added course to day: 1 time slot: 4
+scheduled sessions: 4
+slot av true
+added course to day: 3 time slot: 1
+scheduled sessions: 5
+slot av true
+added course to day: 3 time slot: 4
+scheduled sessions: 6
+
+
+equal spread successful (returned true @addCourse())
+Adding course HIST301
+attempting day pair scheduling
+slot av true
+slot av true
+slot av true
+slot av true
+added course to day: 1 time slot: 3
+scheduled sessions: 1
+added course to day: 3 time slot: 3
+scheduled sessions: 2
+added course to day: 1 time slot: 4
+scheduled sessions: 3
+added course to day: 3 time slot: 4
+scheduled sessions: 4
+Adding course CMPS210
+attempting day pair scheduling
+slot av true
+slot av true
+added course to day: 0 time slot: 0
+scheduled sessions: 1
+added course to day: 2 time slot: 0
+scheduled sessions: 2
+attempting equal spread schedule
+
+
+equal spread successful (returned true @addCourse())
+Adding course PHYS110
+attempting day pair scheduling
+slot av true
+slot av true
+added course to day: 2 time slot: 0
+scheduled sessions: 1
+added course to day: 4 time slot: 0
+scheduled sessions: 2
+pair false
+pair false
+attempting equal spread schedule
+slot av true
+added course to day: 0 time slot: 0
+scheduled sessions: 3
+slot av true
+added course to day: 2 time slot: 1
+scheduled sessions: 4
+slot av true
+added course to day: 4 time slot: 1
+scheduled sessions: 5
+
+
+equal spread successful (returned true @addCourse())
+Adding course CMPS101
+attempting day pair scheduling
+slot av true
+slot av true
+added course to day: 2 time slot: 2
+scheduled sessions: 1
+added course to day: 4 time slot: 2
+scheduled sessions: 2
+pair false
+pair false
+attempting equal spread schedule
+slot av true
+added course to day: 0 time slot: 2
+scheduled sessions: 3
+
+
+equal spread successful (returned true @addCourse())
+Adding course ENG205
+attempting day pair scheduling
+slot av true
+slot av true
+added course to day: 0 time slot: 0
+scheduled sessions: 1
+added course to day: 2 time slot: 0
+scheduled sessions: 2
+pair false
+attempting equal spread schedule
+slot av true
+added course to day: 0 time slot: 1
+scheduled sessions: 3
+slot av true
+added course to day: 2 time slot: 1
+scheduled sessions: 4
+
+
+equal spread successful (returned true @addCourse())
+Adding course CHEM202
+attempting day pair scheduling
+slot av true
+slot av true
+added course to day: 1 time slot: 0
+scheduled sessions: 1
+added course to day: 3 time slot: 0
+scheduled sessions: 2
+pair false
+attempting equal spread schedule
+slot av true
+added course to day: 1 time slot: 1
+scheduled sessions: 3
+slot av true
+added course to day: 1 time slot: 2
+scheduled sessions: 4
+slot av true
+added course to day: 3 time slot: 1
+scheduled sessions: 5
+slot av true
+added course to day: 3 time slot: 2
+scheduled sessions: 6
+
+
+equal spread successful (returned true @addCourse())
+Adding course HIST301
+attempting day pair scheduling
+slot av true
+slot av true
+slot av true
+slot av true
+added course to day: 1 time slot: 3
+scheduled sessions: 1
+added course to day: 3 time slot: 3
+scheduled sessions: 2
+added course to day: 1 time slot: 4
+scheduled sessions: 3
+added course to day: 3 time slot: 4
+scheduled sessions: 4
+day pair successful (returned true @addCourse())
+Adding course LANG202
+attempting day pair scheduling
+attempting equal spread schedule
+slot av true
+added course to day: 4 time slot: 0
+scheduled sessions: 1
+slot av true
+added course to day: 4 time slot: 1
+scheduled sessions: 2
+
+
+equal spread successful (returned true @addCourse())
+Adding course ART202
+attempting day pair scheduling
+slot av true
+slot av true
+added course to day: 1 time slot: 0
+scheduled sessions: 1
+added course to day: 3 time slot: 0
+scheduled sessions: 2
+pair false
+attempting equal spread schedule
+slot av true
+added course to day: 1 time slot: 1
+scheduled sessions: 3
+slot av true
+added course to day: 3 time slot: 1
+scheduled sessions: 4
+
+
+equal spread successful (returned true @addCourse())
+Adding course BUSN301
+attempting day pair scheduling
+slot av true
+slot av true
+added course to day: 1 time slot: 0
+scheduled sessions: 1
+added course to day: 3 time slot: 0
+scheduled sessions: 2
+pair false
+attempting equal spread schedule
+slot av true
+added course to day: 1 time slot: 1
+scheduled sessions: 3
+slot av true
+added course to day: 3 time slot: 1
+scheduled sessions: 4
+
+
+equal spread successful (returned true @addCourse())
+Adding course MATH201
+attempting day pair scheduling
+slot av true
+slot av true
+added course to day: 1 time slot: 2
+scheduled sessions: 1
+added course to day: 3 time slot: 2
+scheduled sessions: 2
+pair false
+attempting equal spread schedule
+slot av true
+added course to day: 1 time slot: 3
+scheduled sessions: 3
+slot av true
+added course to day: 1 time slot: 4
+scheduled sessions: 4
+slot av true
+added course to day: 3 time slot: 3
+scheduled sessions: 5
+slot av true
+added course to day: 3 time slot: 4
+scheduled sessions: 6
+
+
+equal spread successful (returned true @addCourse())
+Adding course PSYC301
+attempting day pair scheduling
+slot av true
+slot av true
+added course to day: 2 time slot: 3
+scheduled sessions: 1
+added course to day: 4 time slot: 3
+scheduled sessions: 2
+pair false
+pair false
+attempting equal spread schedule
+slot av true
+added course to day: 0 time slot: 3
+scheduled sessions: 3
+slot av true
+added course to day: 2 time slot: 4
+scheduled sessions: 4
+slot av true
+added course to day: 4 time slot: 0
+scheduled sessions: 5
+
+
+Adding course HIST301
+attempting day pair scheduling
+slot av true
+slot av true
+slot av true
+slot av true
+added course to day: 1 time slot: 0
+scheduled sessions: 1
+added course to day: 3 time slot: 0
+scheduled sessions: 2
+added course to day: 1 time slot: 1
+scheduled sessions: 3
+added course to day: 3 time slot: 1
+scheduled sessions: 4
+day pair successful (returned true @addCourse())
+Adding course CMPS101
+attempting day pair scheduling
+slot av true
+slot av true
+added course to day: 2 time slot: 2
+scheduled sessions: 1
+added course to day: 4 time slot: 2
+scheduled sessions: 2
+pair false
+pair false
+attempting equal spread schedule
+slot av true
+added course to day: 0 time slot: 2
+scheduled sessions: 3
+
+
+equal spread successful (returned true @addCourse())
+Adding course LANG202
+attempting day pair scheduling
+attempting equal spread schedule
+slot av true
+added course to day: 4 time slot: 0
+scheduled sessions: 1
+slot av true
+added course to day: 4 time slot: 1
+scheduled sessions: 2
+
+
+equal spread successful (returned true @addCourse())
+Adding course CMPS210
+attempting day pair scheduling
+slot av true
+slot av true
+added course to day: 0 time slot: 0
+scheduled sessions: 1
+added course to day: 2 time slot: 0
+scheduled sessions: 2
+attempting equal spread schedule
+
+
+equal spread successful (returned true @addCourse())
+Adding course ART202
+attempting day pair scheduling
+slot av true
+slot av true
+added course to day: 1 time slot: 0
+scheduled sessions: 1
+added course to day: 3 time slot: 0
+scheduled sessions: 2
+pair false
+attempting equal spread schedule
+slot av true
+added course to day: 1 time slot: 1
+scheduled sessions: 3
+slot av true
+added course to day: 3 time slot: 1
+scheduled sessions: 4
+
+
+equal spread successful (returned true @addCourse())
+Adding course PSYC301
+attempting day pair scheduling
+slot av true
+slot av true
+added course to day: 2 time slot: 0
+scheduled sessions: 1
+added course to day: 4 time slot: 0
+scheduled sessions: 2
+pair false
+pair false
+attempting equal spread schedule
+slot av true
+added course to day: 0 time slot: 0
+scheduled sessions: 3
+slot av true
+added course to day: 2 time slot: 1
+scheduled sessions: 4
+slot av true
+added course to day: 4 time slot: 1
+scheduled sessions: 5
+
+
+equal spread successful (returned true @addCourse())
+Adding course BUSN301
+attempting day pair scheduling
+slot av true
+slot av true
+added course to day: 1 time slot: 0
+scheduled sessions: 1
+added course to day: 3 time slot: 0
+scheduled sessions: 2
+pair false
+attempting equal spread schedule
+slot av true
+added course to day: 1 time slot: 1
+scheduled sessions: 3
+slot av true
+added course to day: 3 time slot: 1
+scheduled sessions: 4
+
+
+equal spread successful (returned true @addCourse())
+Adding course ENG205
+attempting day pair scheduling
+slot av true
+slot av true
+added course to day: 0 time slot: 0
+scheduled sessions: 1
+added course to day: 2 time slot: 0
+scheduled sessions: 2
+pair false
+attempting equal spread schedule
+slot av true
+added course to day: 0 time slot: 1
+scheduled sessions: 3
+slot av true
+added course to day: 2 time slot: 1
+scheduled sessions: 4
+
+
+equal spread successful (returned true @addCourse())
+Adding course CHEM202
+attempting day pair scheduling
+slot av true
+slot av true
+added course to day: 1 time slot: 2
+scheduled sessions: 1
+added course to day: 3 time slot: 2
+scheduled sessions: 2
+pair false
+attempting equal spread schedule
+slot av true
+added course to day: 1 time slot: 3
+scheduled sessions: 3
+slot av true
+added course to day: 1 time slot: 4
+scheduled sessions: 4
+slot av true
+added course to day: 3 time slot: 3
+scheduled sessions: 5
+slot av true
+added course to day: 3 time slot: 4
+scheduled sessions: 6
+
+
+equal spread successful (returned true @addCourse())
+Adding course PHYS110
+attempting day pair scheduling
+slot av true
+slot av true
+slot av true
+slot av true
+added course to day: 2 time slot: 2
+scheduled sessions: 1
+added course to day: 4 time slot: 2
+scheduled sessions: 2
+pair false
+pair false
+attempting equal spread schedule
+slot av true
+added course to day: 0 time slot: 0
+scheduled sessions: 3
+slot av true
+added course to day: 2 time slot: 0
+scheduled sessions: 4
+slot av true
+added course to day: 4 time slot: 3
+scheduled sessions: 5
+
+
+equal spread successful (returned true @addCourse())
+Adding course MATH201
+attempting day pair scheduling
+slot av true
+slot av true
+added course to day: 1 time slot: 2
+scheduled sessions: 1
+added course to day: 3 time slot: 2
+scheduled sessions: 2
+pair false
+attempting equal spread schedule
+slot av true
+added course to day: 1 time slot: 3
+scheduled sessions: 3
+slot av true
+added course to day: 1 time slot: 4
+scheduled sessions: 4
+slot av true
+added course to day: 3 time slot: 3
+scheduled sessions: 5
+slot av true
+added course to day: 3 time slot: 4
+scheduled sessions: 6
+
+

@@ -29,7 +29,7 @@ public class user implements ActionListener {
 
 		courseScheduler scheduler = new courseScheduler();
 
-		for(UUID courseUUID: Courses.keySet()){
+		for(UUID courseUUID:fileReader.CoursesQueue){
 			scheduler.enqueueCourse(Courses.get(courseUUID));
 		}
 
