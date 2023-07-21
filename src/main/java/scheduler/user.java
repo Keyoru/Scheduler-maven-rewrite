@@ -26,14 +26,16 @@ public class user implements ActionListener {
 
 		FileReader fileReader = new FileReader(new File("data/scheduler-input-draf1.xlsx"));
 		HashMap<UUID, course> Courses = fileReader.readCoursesFromSheet();
-	   // LinkedList<course> notScheduled = courseScheduler.getNotScheduled();
 
 		courseScheduler scheduler = new courseScheduler();
 
-		scheduler.courseMap = Courses;
+		for(UUID courseUUID: Courses.keySet()){
+			scheduler.enqueueCourse(Courses.get(courseUUID));
+		}
 
 		scheduler.ScheduleCourses();
 		scheduler.displaySchedule();
+		scheduler.outputExcel();
 
 		HashMap<UUID, course> CourseMap = (HashMap<UUID, course>) scheduler.courseMap;
 		LinkedList<String> l = new LinkedList<String>();

@@ -6,6 +6,9 @@ import java.time.LocalTime;
 import java.util.UUID;
 import java.util.HashMap;
 import java.util.LinkedList;
+import java.util.Map;
+import java.time.LocalTime;
+import java.time.format.DateTimeFormatter;
 
 import org.apache.poi.ss.usermodel.*;
 import org.apache.poi.xssf.usermodel.XSSFWorkbook;
@@ -26,8 +29,14 @@ public class FileReader {
         Workbook workbook = new XSSFWorkbook(fis);
 
         // Get the specific sheet by name
-        Sheet sheet1 = workbook.getSheetAt(1);
-        Sheet sheet2 = workbook.getSheetAt(0);
+        Sheet sheet1 = workbook.getSheetAt(0);
+        Sheet sheet2 = workbook.getSheetAt(1);
+
+       if(!isFirstSheet(sheet1)){
+        Sheet temp_Sheet = sheet1;
+        sheet1 = sheet2;
+        sheet2 = temp_Sheet;
+       }
 
         if (sheet1 != null && sheet2 != null) {
             // Iterate over rows in both sheets simultaneously
@@ -54,7 +63,7 @@ public class FileReader {
                   int index2 = slots[1];
 
 
-                    LinkedList<String>Split_Days = Split_String(instructor_days,"/");
+                    LinkedList<String>Split_Days = Split_Days(instructor_days);
                     LinkedList<Integer>Instructor_days = new LinkedList<Integer>();
 
                     for(int i=0;i<Split_Days.size();i++){
@@ -62,7 +71,7 @@ public class FileReader {
                    }
 
                     String conflict_courses  = row2.getCell(0).getStringCellValue();
-                    LinkedList<String> conflicting_courses = Split_String(conflict_courses,"/");
+                    LinkedList<String> conflicting_courses = Split_Days(conflict_courses);
 
                     String course_type = row2.getCell(1).getStringCellValue();
                     String session_time = row2.getCell(2).getStringCellValue();
@@ -71,7 +80,7 @@ public class FileReader {
               
 
                       course course = new  course(course_id, course_name, num_credits,num_sections,num_sessions, instructor_name,
-                      Instructor_days, index1, index2, conflicting_courses , course_type , calculateSlots(session_time));
+                      Instructor_days, index1, index2, conflicting_courses , course_type , calculateSlots(session_time),session_time);
 
         
                       Courses.put(UUID.randomUUID() , course);
@@ -82,7 +91,7 @@ public class FileReader {
          fis.close();
  
          return Courses;
-    }
+         }
         
 
 
@@ -105,8 +114,11 @@ public class FileReader {
         }
 
         int totalMinutes = (hours * 60) + minutes;
-        int slots = (int) Math.ceil((double) totalMinutes / 75);
+        int slots = totalMinutes / 75;
 
+        if(slots == 0){
+            slots = 1;
+        }
 
         return slots;
     }
@@ -118,7 +130,7 @@ public class FileReader {
         // Iterate over cells in the first row
            for (Cell cell : firstRow) {
              // Check the header value of a specific column
-            if (cell.getColumnIndex() == 0 && cell.getStringCellValue().equalsIgnoreCase("course code")) {
+            if (cell.getStringCellValue().equalsIgnoreCase("course id")) {
              return true;
            }
            else{
@@ -157,9 +169,9 @@ public class FileReader {
         return slots;
     }
 
-    private LinkedList<String> Split_String(String LongString, String Splitter){ //splits long string according to 
+    private LinkedList<String> Split_Days(String instructors_day){
         LinkedList<String> slots = new LinkedList<String>();
-        String[] hours = LongString.split(Splitter);
+        String[] hours = instructors_day.split("/");
 
         for (String hour : hours) {
             slots.add(hour.trim());
