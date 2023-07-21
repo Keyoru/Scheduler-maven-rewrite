@@ -31,14 +31,8 @@ public class FileReader {
         Workbook workbook = new XSSFWorkbook(fis);
 
         // Get the specific sheet by name
-        Sheet sheet1 = workbook.getSheetAt(0);
-        Sheet sheet2 = workbook.getSheetAt(1);
-
-        if (!isFirstSheet(sheet1)) {
-            Sheet temp_Sheet = sheet1;
-            sheet1 = sheet2;
-            sheet2 = temp_Sheet;
-        }
+        Sheet sheet1 = workbook.getSheetAt(1);
+        Sheet sheet2 = workbook.getSheetAt(0);
 
         if (sheet1 != null && sheet2 != null) {
             // Iterate over rows in both sheets simultaneously
@@ -59,11 +53,11 @@ public class FileReader {
                     String instructor_hours = row1.getCell(7).getStringCellValue();
 
                     LinkedList<String> timeslots = convertHourstoSlots(instructor_hours);
-                    int[] slots = getSlotsIndicies(timeslots.getFirst(), timeslots.getLast());
+                    int[] slots = getSlotsIndicies(LocalTime.parse(timeslots.getFirst()), LocalTime.parse(timeslots.getLast()));
                     int index1 = slots[0];
                     int index2 = slots[1];
 
-                    LinkedList<String> Split_Days = Split_Days(instructor_days);
+                    LinkedList<String> Split_Days = Split_String(instructor_days, "/");
                     LinkedList<Integer> Instructor_days = new LinkedList<Integer>();
 
                     for (int i = 0; i < Split_Days.size(); i++) {
@@ -71,7 +65,7 @@ public class FileReader {
                     }
 
                     String conflict_courses = row2.getCell(0).getStringCellValue();
-                    LinkedList<String> conflicting_courses = Split_Days(conflict_courses);
+                    LinkedList<String> conflicting_courses = Split_String(conflict_courses, "/");
 
                     String course_type = row2.getCell(1).getStringCellValue();
                     String session_time = row2.getCell(2).getStringCellValue();
@@ -109,11 +103,7 @@ public class FileReader {
         }
 
         int totalMinutes = (hours * 60) + minutes;
-        int slots = totalMinutes / 75;
-
-        if (slots == 0) {
-            slots = 1;
-        }
+        int slots = (int) Math.ceil((double) totalMinutes / 75);
 
         return slots;
     }
@@ -125,7 +115,7 @@ public class FileReader {
             // Iterate over cells in the first row
             for (Cell cell : firstRow) {
                 // Check the header value of a specific column
-                if (cell.getStringCellValue().equalsIgnoreCase("course id")) {
+                if (cell.getColumnIndex() == 0 && cell.getStringCellValue().equalsIgnoreCase("course code")) {
                     return true;
                 } else {
                     break;
@@ -163,9 +153,9 @@ public class FileReader {
         return slots;
     }
 
-    private LinkedList<String> Split_Days(String instructors_day) {
+    private LinkedList<String> Split_String(String LongString, String Splitter) { // splits long string according to
         LinkedList<String> slots = new LinkedList<String>();
-        String[] hours = instructors_day.split("/");
+        String[] hours = LongString.split(Splitter);
 
         for (String hour : hours) {
             slots.add(hour.trim());
@@ -174,37 +164,34 @@ public class FileReader {
         return slots;
     }
 
-    private static String convertToMilitaryTime(String inputTime) {
-        SimpleDateFormat inputFormat = new SimpleDateFormat("HH:mm");
-        SimpleDateFormat outputFormat = new SimpleDateFormat("HH:mm");
+    private LocalTime convertToMilitaryTime(String inputTime) {
+        DateTimeFormatter inputFormatter = DateTimeFormatter.ofPattern("HH:mm");
+        DateTimeFormatter outputFormatter = DateTimeFormatter.ofPattern("HH:mm");
 
-        Date date;
+        LocalTime time;
         try {
-            date = inputFormat.parse(inputTime);
-        } catch (ParseException e) {
+            time = LocalTime.parse(inputTime, inputFormatter);
+        } catch (Exception e) {
             try {
                 // If the parsing fails, try parsing in "H:mm" format
-                inputFormat.applyPattern("H:mm");
-                date = inputFormat.parse(inputTime);
-            } catch (ParseException ex) {
+                inputFormatter = DateTimeFormatter.ofPattern("H:mm");
+                time = LocalTime.parse(inputTime, inputFormatter);
+            } catch (Exception ex) {
                 System.err.println("Invalid time format. Please use HH:mm or H:mm format.");
-                return "";
+                return null;
             }
         }
 
-        // Add 12 hours to the date if hours are between 1 and 6
-        int hours = date.getHours();
+        // Add 12 hours to the time if hours are between 1 and 6
+        int hours = time.getHour();
         if (hours >= 1 && hours <= 6) {
-            date.setTime(date.getTime() + 12 * 60 * 60 * 1000); // Add 12 hours in milliseconds
+            time = time.plusHours(12);
         }
 
-        return outputFormat.format(date);
+        return time;
     }
 
-    private int[] getSlotsIndicies(String hour1, String hour2) {
-        LocalTime startTime = LocalTime.parse(hour1);
-        LocalTime endTime = LocalTime.parse(hour2);
-
+    private int[] getSlotsIndicies(LocalTime startTime, LocalTime endTime) {
         LocalTime[] slots = {
                 LocalTime.parse("08:00"), // Slot 0
                 LocalTime.parse("09:30"), // Slot 1
@@ -212,16 +199,14 @@ public class FileReader {
                 LocalTime.parse("13:00"), // Slot 3
                 LocalTime.parse("14:30"), // Slot 4
                 LocalTime.parse("16:00"), // Slot 5
-                LocalTime.parse("17:15") // Final hour
+                LocalTime.parse("17:15")  // Final hour
         };
 
         int startSlot = -1;
         int endSlot = -1;
 
         // Find the first slot
-        if ((startTime.isAfter(LocalTime.parse("12:15")) && startTime.isBefore(LocalTime.parse("13:00"))) // between
-                                                                                                          // 12:15 and 1
-                                                                                                          // exclusive
+        if ((startTime.isAfter(LocalTime.parse("12:15")) && startTime.isBefore(LocalTime.parse("13:00")))
                 || startTime.equals(LocalTime.parse("12:15"))) {
             startSlot = 3;
         } else {
@@ -237,9 +222,9 @@ public class FileReader {
                 startSlot = slots.length - 2;
             }
         }
+
         // Find the last slot
-        if ((endTime.isAfter(LocalTime.parse("12:15")) && endTime.isBefore(LocalTime.parse("13:00"))) // between 12:15
-                                                                                                      // and 1 exclusive
+        if ((endTime.isAfter(LocalTime.parse("12:15")) && endTime.isBefore(LocalTime.parse("13:00")))
                 || endTime.equals(LocalTime.parse("12:15"))) {
             endSlot = 3;
         } else {
@@ -250,11 +235,12 @@ public class FileReader {
                     slotFound = true;
                     break;
                 }
-                if (!slotFound) {
-                    endSlot = slots.length - 1;
-                }
+            }
+            if (!slotFound) {
+                endSlot = slots.length - 1;
             }
         }
+
         // Return the viable slots as an array
         return new int[] { startSlot, endSlot };
     }
