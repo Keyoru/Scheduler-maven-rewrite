@@ -248,18 +248,15 @@ public class courseScheduler {
     
     
     
-private boolean attemptEqualSpreadSchedule(UUID courseId) {
+    private boolean attemptEqualSpreadSchedule(UUID courseId) {
         
-    //  TODO:   case of < 1
-    //           day pairs: MON-WED   T-TH 
+        printWriter.println("adding course " + courseMap.get(courseId).courseID + "\nStart timeslot Index = " + courseMap.get(courseId).TimeSlotIndexstart + "\nEnd timeslot Index = " + courseMap.get(courseId).TimeSlotIndexEnd + "\nDays" + courseMap.get(courseId).instructorDays.toString());
 
-    printWriter.println("adding course " + courseMap.get(courseId).courseID + "\nStart timeslot Index = " + courseMap.get(courseId).TimeSlotIndexstart + "\nEnd timeslot Index = " + courseMap.get(courseId).TimeSlotIndexEnd + "\nDays" + courseMap.get(courseId).instructorDays.toString());
-        
-    for(int dayIndex: courseMap.get(courseId).instructorDays){
-            
+        for(int dayIndex: courseMap.get(courseId).instructorDays){
+
             int sessionsPerDay = courseMap.get(courseId).numberOfSessions / courseMap.get(courseId).instructorDays.size();
             int sessionsScheduled = 0;
-        
+
             for(int i = courseMap.get(courseId).TimeSlotIndexstart; i < courseMap.get(courseId).TimeSlotIndexEnd && sessionsScheduled < sessionsPerDay; i++){
                 if (isSlotAvailable(courseId, dayIndex, i)) {
                     if (courseMap.get(courseId).nbOfSlots > 1) { // case 1, each course lecture takes more than 1 slot of time
@@ -274,7 +271,6 @@ private boolean attemptEqualSpreadSchedule(UUID courseId) {
                 }
             }
         }
-        
         printWriter.println("\n");
         printWriter.flush();    
         if (courseMap.get(courseId).sessionsScheduled >= courseMap.get(courseId).numberOfSessions) {
