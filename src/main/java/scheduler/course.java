@@ -26,6 +26,7 @@ public class course {
    boolean[][] isScheduled;
    boolean[][] isAvailable;   // is used exclusively for rescheduling courses when unscheduled courses remain
                               // not for course conflcits and restrictions
+                              // currently redundant and unused
 
     course(String ID, String name, int creds, int sections, int sessions, String instname,
      LinkedList<Integer> instdays, int index1, int index2, LinkedList<String> conflicts

@@ -440,7 +440,7 @@ public class courseScheduler {
                         System.out.println("found conflict");
                         unscheduleCourseFromAll(scheduledCourseUUID);
                         addCourse(unscheduledCourseUUID);
-                        unscheduledCourseHeap.remove(unscheduledCourse);
+                        unscheduledCourseHeap.remove(unscheduledCourseUUID);
                         addCourse(scheduledCourseUUID);
                         return;
                     }
