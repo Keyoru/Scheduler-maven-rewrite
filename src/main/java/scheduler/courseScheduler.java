@@ -514,7 +514,7 @@ public class courseScheduler {
                 }
             }
         }
-        try (FileOutputStream outputStream = new FileOutputStream("CourseSchedule.xlsx")) {
+        try (FileOutputStream outputStream = new FileOutputStream("data/CourseSchedule.xlsx")) {
             workbook.write(outputStream);
         } catch (IOException e) {
             e.printStackTrace();
