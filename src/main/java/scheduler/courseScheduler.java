@@ -3,10 +3,13 @@ package scheduler;
 import java.util.LinkedList;
 import java.util.UUID;
 import java.util.Map;
+import java.util.Queue;
 import java.util.Set;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.HashSet;
+import java.util.Iterator;
+import java.util.LinkedHashMap;
 import java.util.List;
 
 import java.time.LocalDateTime;
@@ -18,7 +21,6 @@ import java.io.PrintWriter;
 import java.io.File;
 import java.io.FileOutputStream;
 
-import org.apache.commons.compress.harmony.pack200.NewAttributeBands.Integral;
 import org.apache.poi.ss.usermodel.*;
 import org.apache.poi.xssf.usermodel.XSSFWorkbook;
 
@@ -29,13 +31,16 @@ public class courseScheduler {
 
     LinkedList<UUID>[][] schedule = new LinkedList[days][timeslots];
     Map<UUID, course> courseMap;
+    Queue<UUID> courseQueue;
 
     private final List<List<Integer>> dayPairs = new ArrayList<>();
 
+    private Set<UUID> alreadyRescheduled = new HashSet<>();
 
     
     //for courses with no place found to store them
     LinkedList<UUID> unscheduledCourseHeap = new LinkedList<>();
+    LinkedList<UUID> coursesToBeRescheduled = new LinkedList<>();
 
     FileWriter fileWriter;
     PrintWriter printWriter; 
@@ -63,7 +68,8 @@ public class courseScheduler {
 
             fileWriter = new FileWriter(logFile, true); // 'true' for appending to an existing file
             printWriter = new PrintWriter(fileWriter);
-            courseMap = new HashMap<>();
+            courseMap = new LinkedHashMap<>();
+            courseQueue = new LinkedList<UUID>();
 
             // Initialize day pairs (M,W) and (T,Th)
             dayPairs.add(List.of(2, 4)); // Wednesday, Friday
@@ -86,17 +92,43 @@ public class courseScheduler {
         return unscheduledCourseHeap;
     }
 
+    public void enqueueCourse(course course){
+        UUID courseUUID = UUID.randomUUID();
+        courseMap.put(courseUUID, course);
+        courseQueue.add(courseUUID);
+    }
+
     public void ScheduleCourses() {
-        Set<UUID> courseIds = new HashSet<>(courseMap.keySet()); // without it this doesnt work idk why
-        for (UUID courseId : courseIds) {
-            addCourse(courseId);
+        
+        for (UUID courseUUID : courseQueue) {
+            addCourse(courseUUID);
         }
-        if(!unscheduledCourseHeap.isEmpty()){
-            for(UUID unscheduledCourseUUID: unscheduledCourseHeap){
-                rescheduleConflictingCourse(unscheduledCourseUUID);
+        
+    }
+
+    public void moveUnscheduledCourses(){
+        for(UUID courseUUID:unscheduledCourseHeap){
+            coursesToBeRescheduled.add(courseUUID);
+        }
+    }
+    
+
+    public void rescheduleConflicts() {
+        if (!coursesToBeRescheduled.isEmpty()) {
+            System.out.println("not empty");
+            Iterator<UUID> iterator = coursesToBeRescheduled.iterator();
+            while (iterator.hasNext()) {
+                UUID unscheduledCourseUUID = iterator.next();
+                if (!alreadyRescheduled.contains(unscheduledCourseUUID)) {
+                    rescheduleConflictingCourse(unscheduledCourseUUID);
+                    alreadyRescheduled.add(unscheduledCourseUUID);
+                }
+                iterator.remove(); // Safely remove the current element from coursesToBeRescheduled
             }
         }
     }
+    
+    
 
 
     //calls the other helper method depending on requirements 
@@ -119,8 +151,19 @@ public class courseScheduler {
         //System.out.println(courseMap.get(courseId).courseID);
         //System.out.println(courseMap.get(courseId).conflictingCourses.toString());
 
+        boolean scheduleOnce = false;
+        try{
+            if(Integer.parseInt(courseNameSplit[1]) > 0){
+                System.out.println("lecture number " + courseNameSplit[1]);
+                scheduleOnce = true;
+            }
+        }catch(Exception e){
+            System.out.println("parse error");
+        }
+        
+
         course currentSection = null;
-        if(courseMap.get(courseUUID).numberOfSections > 1){
+        if(courseMap.get(courseUUID).numberOfSections > 1 && !scheduleOnce){
             for(int i = 1; i <= courseMap.get(courseUUID).numberOfSections;i++){
                 
                 //currentSection same exact attributes as course but with courseID += "-"+i
@@ -158,7 +201,7 @@ public class courseScheduler {
                 unscheduledCourseHeap.add(courseSectionUUID);
             }    
         }else{
-            printWriter.println("Adding course " + courseMap.get(courseUUID).courseID);
+            System.out.println("Adding course " + courseMap.get(courseUUID).courseID);
 
             if (attemptDayPairSchedule(courseUUID) && !(courseMap.get(courseUUID).numberOfSessions < courseMap.get(courseUUID).instructorDays.size())) {
                 System.out.println("pairs true");
@@ -385,24 +428,28 @@ public class courseScheduler {
         course unscheduledCourse = courseMap.get(unscheduledCourseUUID);
         for(LinkedList<UUID>[] day: schedule){
             for(LinkedList<UUID> slot: day){   
-                for(UUID courseUUID: slot){
-                    if(unscheduledCourse.conflictingCourses.contains(courseMap.get(courseUUID).courseID)){
-                        unscheduleCourseFromAll(unscheduledCourseUUID);
+                for(UUID scheduledCourseUUID: slot){
+                    
+                    String scheduledCourseid = courseMap.get(scheduledCourseUUID).courseID;
+                    // parsing to get rid of -i of different sections
+                    // for example instead of comparing PHYS201-2 (present in slot) which isnt present in the course.conflictingCourses
+                    // we compare PHYS201
+                    String[] scheduledCourseSplit = scheduledCourseid.split("-");
+                    String scheduledCourseID = scheduledCourseSplit[0];
+                    if (unscheduledCourse.conflictingCourses.contains(scheduledCourseID)) {
+                        System.out.println("found conflict");
+                        unscheduleCourseFromAll(scheduledCourseUUID);
                         addCourse(unscheduledCourseUUID);
-                        addCourse(courseUUID);
-                    }  
+                        unscheduledCourseHeap.remove(unscheduledCourse);
+                        addCourse(scheduledCourseUUID);
+                        return;
+                    }
+
                } 
             }
         }
     }
     
-
-    private List<Integer> getNextDayPair(int lectureIndex) {
-        // Assumes dayPairs is a list containing pairs of day indices, e.g., [[0, 2], [1, 3], [2, 4]]
-        return dayPairs.get(lectureIndex % dayPairs.size());
-    }
-    
-
     public void unscheduleCourseFromSlot(UUID courseUUID, int dayIndex, int slotIndex){
         schedule[dayIndex][slotIndex].remove(courseUUID);
         System.out.print(courseMap.get(courseUUID).isScheduled[dayIndex][slotIndex]);
@@ -410,6 +457,7 @@ public class courseScheduler {
     }
      
     public void unscheduleCourseFromAll(UUID courseUUID){
+        courseMap.get(courseUUID).sessionsScheduled = 0;
         for(int i = 0; i < 5; i++){
             for(int j = 0; j < 6;j++){
                 if(courseMap.get(courseUUID).isScheduled[i][j]){
@@ -418,6 +466,12 @@ public class courseScheduler {
             }
             System.out.println();
         }
+    }
+
+
+    private List<Integer> getNextDayPair(int lectureIndex) {
+        // Assumes dayPairs is a list containing pairs of day indices, e.g., [[0, 2], [1, 3], [2, 4]]
+        return dayPairs.get(lectureIndex % dayPairs.size());
     }
 
 

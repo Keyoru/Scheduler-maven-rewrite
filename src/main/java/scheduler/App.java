@@ -9,10 +9,10 @@ public class App {
         public static void main(String[] args) {
 
             courseScheduler scheduler = new courseScheduler();
-            LinkedList<Integer> instructorDays1 = new LinkedList<>(List.of(0, 2)); 
+            LinkedList<Integer> instructorDays1 = new LinkedList<>(List.of(0, 1, 2, 3)); 
             LinkedList<String> conflictingCourses1 = new LinkedList<>(List.of("MTH202"));
-            course course1 = new course("CSE101", "Course 1", 3, 1, 2,
-                    "John Doe", instructorDays1, 0, 2, conflictingCourses1,
+            course course1 = new course("CSE101", "Course 1", 3, 2, 2,
+                    "John Doe", instructorDays1, 0, 6, conflictingCourses1,
                     "Type 1", 1);
             System.out.println(course1.TimeSlotIndexEnd);
             LinkedList<Integer> instructorDays2 = new LinkedList<>(List.of(0, 2)); // Monday, Wednesday
@@ -112,8 +112,8 @@ public class App {
                     "Charlotte Wilson", instructorDays20, 3, 6, conflictingCourses20,
                     "Type 20", 1);  
             
-            scheduler.courseMap.put(UUID.randomUUID(), course1);
-            scheduler.courseMap.put(UUID.randomUUID(), course2);
+            scheduler.enqueueCourse( course1);
+            scheduler.enqueueCourse( course2);
             //scheduler.courseMap.put(UUID.randomUUID(), course3);
             //scheduler.courseMap.put(UUID.randomUUID(), course4);
             //scheduler.courseMap.put(UUID.randomUUID(), course5);
@@ -133,14 +133,25 @@ public class App {
             //scheduler.courseMap.put(UUID.randomUUID(), course19);
             //scheduler.courseMap.put(UUID.randomUUID(), course20);
 
-                
+
             scheduler.ScheduleCourses();
             
+           
+            scheduler.displaySchedule();
+
+            scheduler.moveUnscheduledCourses();
+            scheduler.rescheduleConflicts();
+            
+
             System.out.println();
             // Display the course schedule
+            scheduler.displaySchedule();            
+            for(UUID courseUUID:scheduler.courseQueue){
+                System.out.print(scheduler.courseMap.get(courseUUID).courseID + " ");
+            }
+            System.out.println();
+
             
-            scheduler.displaySchedule();
-            scheduler.outputExcel();
 
             //for(LinkedList<UUID>[] days:scheduler.schedule){
             //    for(LinkedList<UUID> slots:days){
